@@ -90,8 +90,9 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_EXIT: return EXIT;	
 			//v2***************************
 			case ITM_CHNG_DRAW_CLR:return CHNG_DRAW_CLR;
-			case ITM_CHNG_FILL_CLR: return CHNG_FILL_CLR;
-			
+			case ITM_CHNG_FILL_CLR:return CHNG_FILL_CLR;
+			//maslooh ***v3***
+			case ITM_DELETE:return DEL;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -182,13 +183,15 @@ void GUI::CreateDrawToolBar() const
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
 	MenuItemImages[ITM_SQUR] = "images\\MenuItems\\Menu_Sqr.jpg";
-	//v1********************
+	//********v1*******
 	MenuItemImages[ITM_ELPS] = "images\\MenuItems\\Menu_Elps.jpg";
 	MenuItemImages[ITM_HEXA] = "images\\MenuItems\\Menu_Hexa.jpg";
 
-	//v2********************
+	//********v2********
 	MenuItemImages[ITM_CHNG_DRAW_CLR] = "images\\MenuItems\\drawcolor1.jpg";
 	MenuItemImages[ITM_CHNG_FILL_CLR] = "images\\MenuItems\\fillcolor.jpg";
+	//maslooh ***v3***
+	MenuItemImages[ITM_DELETE]= "images\\MenuItems\\delete.jpg";
 
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 

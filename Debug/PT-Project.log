@@ -1,12 +1,6 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  GUI.cpp
-C:\projects\DS project\Project\v2\GUI\GUI.cpp(363,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\projects\DS project\Project\v2\GUI\GUI.cpp(364,40): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\projects\DS project\Project\v2\GUI\GUI.cpp(364,40): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\projects\DS project\Project\v2\GUI\GUI.cpp(364,82): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\projects\DS project\Project\v2\GUI\GUI.cpp(364,82): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  ActionAddSquare.cpp
-  ActionAddHexagon.cpp
-  ActionAddEllipse.cpp
+  ApplicationManager.cpp
+  ActionDelete.cpp
   Generating Code...
-  PT-Project.vcxproj -> C:\projects\DS project\Project\v2\Debug\PT Project.exe
+ActionAddEllipse.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  PT-Project.vcxproj -> C:\projects\DS project\Project\DSProject-drawing-for-kids\Debug\PT Project.exe

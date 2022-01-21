@@ -40,7 +40,6 @@ void ActionSelect::Execute()
 		{
 			selectedFig->SetSelected(true);
 			selectedFig->PrintInfo(pGUI);
-
 		}
 	}
 }

@@ -1,5 +1,6 @@
 #include "CEllipse.h"
-
+#include <iostream>
+#include <string>
 CEllipse::CEllipse(Point P1, Point p2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	firstPoint = P1;

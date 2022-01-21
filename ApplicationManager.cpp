@@ -5,6 +5,7 @@
 #include "Actions\ActionSelect.h" //v2
 #include "Actions/ChngDrawClrAction.h" //v2
 #include "Actions/ChngFillClrAction.h" //v2
+#include "Actions/ActionDelete.h" //v3
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -80,6 +81,10 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			newAct = new ChngFillClrAction(this);
 			break;
 
+		case DEL:
+			newAct = new ActionDelete(this); //***v3***
+			break;
+
 		case EXIT:
 			///create ExitAction here
 			
@@ -113,6 +118,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Reads a color from the color toolbar
 bool ApplicationManager::GetColor(color& inputColor) //v2
@@ -162,15 +168,29 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
 	
-	for (int i=0;i<FigCount;i++)
+	for (int i=FigCount-1;i>=0;i--)
 	{
-		if (FigList[i]->InPoint(x,y))
+		if (FigList[i]&&FigList[i]->InPoint(x,y))//********v3*********
 		{
 			return FigList[i];
 		}
 	}
 
 	return NULL;
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+//**********v3***********
+void ApplicationManager::DeleteFigure()
+{
+
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]&&FigList[i]->IsSelected())
+		{
+			delete FigList[i];
+			FigList[i] = NULL;
+		}
+	}
 }
 //==================================================================================//
 //							Interface Management Functions							//
@@ -180,7 +200,12 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 void ApplicationManager::UpdateInterface() const
 {	
 	for(int i=0; i<FigCount; i++)
-		FigList[i]->DrawMe(pGUI);		//Call Draw function (virtual member fn)
+	{
+		if (FigList[i])//********v3**********
+		{
+			FigList[i]->DrawMe(pGUI); 	//Call Draw function (virtual member fn)
+		}
+	}	
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the interface

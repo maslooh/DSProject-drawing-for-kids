@@ -4,3 +4,4 @@ C:\projects\DS project\Project\Project Framework\Debug\PT Project.exe
 C:\projects\DS project\Project\Project Framework - Copy\Debug\PT Project.exe
 C:\projects\DS project\Project\Project Framework - v1\Debug\PT Project.exe
 C:\projects\DS project\Project\v2\Debug\PT Project.exe
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Debug\PT Project.exe
