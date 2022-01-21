@@ -8,11 +8,12 @@ class CHexagon : public CFigure
 private:
 	Point TopLeftCorner;
 	int length;
-	Point pointsList[2];
+	int height; //*****v2*******
 public:
-	CHexagon(Point, int, GfxInfo FigureGfxInfo);
-	virtual Point* getPoints();
+	CHexagon(Point, int, GfxInfo FigureGfxInfo); //*****v2*******
 	virtual void DrawMe(GUI* pOut) const;
+	virtual bool InPoint(int x, int y);//*****v2*******
+	virtual void PrintInfo(GUI* pGUI);
 };
 
 #endif

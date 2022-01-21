@@ -31,7 +31,7 @@ public:
 	Action* CreateAction(ActionType);
 	void ExecuteAction(Action*&) ; //Execute an action
 
-	bool GetColor(color&);			   //v2 Reads a color from the color toolbar
+	bool GetColor(color&);			   ////*****v2******* Reads a color from the color toolbar
 	
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig); //Adds a new figure to the FigList

@@ -8,11 +8,11 @@ class CEllipse : public CFigure
 private:
 	Point firstPoint;
 	Point secondPoint;
-	Point pointsList[2]; //v2
 public:
-	CEllipse(Point, Point, GfxInfo FigureGfxInfo);
+	CEllipse(Point, Point, GfxInfo FigureGfxInfo);//*****v2*******
 	virtual void DrawMe(GUI* pOut) const;
-	virtual Point* getPoints();//v2
+	virtual bool InPoint(int x, int y);//*****v2*******
+	virtual void PrintInfo(GUI* pGUI);
 };
 
 #endif

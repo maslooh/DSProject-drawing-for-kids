@@ -341,7 +341,8 @@ void GUI::DrawEllipse(Point p1, Point p2, GfxInfo ellipGfxInfo, bool selected) c
 	pWind->DrawEllipse(p1.x, p1.y, p2.x, p2.y, style);
 
 }
-void GUI::DrawHexagon(Point P1, int length, GfxInfo HexaGfxInfo, bool selected) const
+
+void GUI::DrawHexagon(Point P1, int length, int height, GfxInfo HexaGfxInfo, bool selected) const//*****v2*******
 {
 	color DrawingClr;
 	if (selected)
@@ -360,12 +361,10 @@ void GUI::DrawHexagon(Point P1, int length, GfxInfo HexaGfxInfo, bool selected) 
 	else
 		style = FRAME;
 
-	int R = length * sin(60 * M_PI / 180);
 	int x[] = { P1.x, P1.x + length, P1.x + 1.5 * length, P1.x + length, P1.x, P1.x - 0.5 * length };
-	int y[] = { P1.y, P1.y, P1.y + R, P1.y + 2 * R, P1.y + 2 * R, P1.y + R };
+	int y[] = { P1.y, P1.y, P1.y + 0.5 * height, P1.y + height, P1.y + height, P1.y + 0.5 * height };
 	pWind->DrawPolygon(x, y, 6, style);
 }
-
 
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()

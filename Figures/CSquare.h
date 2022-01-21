@@ -8,11 +8,11 @@ class CSquare : public CFigure
 private:
 	Point TopLeftCorner;	
 	int length;
-	Point pointsList[2];//v2
 public:
-	CSquare(Point , int, GfxInfo FigureGfxInfo );
-	virtual Point* getPoints() ;//v2
+	CSquare(Point , int, GfxInfo FigureGfxInfo );//*****v2*******
 	virtual void DrawMe(GUI* pOut) const;
+	virtual bool InPoint(int x, int y) ;//*****v2*******
+	virtual void PrintInfo(GUI* pGUI);
 };
 
 #endif

@@ -30,6 +30,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	TO_PLAY,		//Switch interface to Play mode
 
 	///TODO: Add more action types (if needed)
+	//*****v2*******
 	SET_BLACK,		//pick black color
 	SET_WHITE,		//pick white color
 	SET_RED,		//pick red color

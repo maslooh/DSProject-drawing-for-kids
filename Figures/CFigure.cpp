@@ -2,6 +2,7 @@
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
+	ID = ++CFigure::counter; //*****v2*******
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
 }
@@ -20,4 +21,3 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
-

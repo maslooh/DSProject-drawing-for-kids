@@ -8,6 +8,7 @@
 class CFigure
 {
 protected:
+	static int counter; //*****v2*******
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
@@ -20,9 +21,11 @@ public:
 	bool IsSelected() const;	//check whether fig is selected
 
 	virtual void DrawMe(GUI*) const  = 0 ;		//Draw the figure
-	virtual Point* getPoints()=0;	//***************************
+	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
+
+	virtual bool InPoint(int x, int y) = 0;  // if point inside the figure
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
@@ -37,7 +40,7 @@ public:
 	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 
-	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
+	virtual void PrintInfo(GUI* pGUI) = 0;	//print all figure info on the status bar
 };
 
 #endif

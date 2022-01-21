@@ -157,20 +157,14 @@ bool ApplicationManager::GetColor(color& inputColor) //v2
 }
 ////////////////////////////////////////////////////////////////////////////////////
 
-CFigure *ApplicationManager::GetFigure(int x, int y) const//v2***************************************
+CFigure *ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 {
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
 	
 	for (int i=0;i<FigCount;i++)
 	{
-		
-		int min_x = FigList[i]->getPoints()[0].x;
-		int min_y = FigList[i]->getPoints()[0].y;
-		int max_x= FigList[i]->getPoints()[1].x;
-		int max_y= FigList[i]->getPoints()[1].y;
-		
-		if (x<max_x && x>min_x && y<max_y && y>min_y)
+		if (FigList[i]->InPoint(x,y))
 		{
 			return FigList[i];
 		}

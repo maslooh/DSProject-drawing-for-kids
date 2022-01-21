@@ -6,7 +6,7 @@
 #include <string>
 #include <string.h>
 #include <iostream>
-
+//*****v2*******
 ActionSelect::ActionSelect(ApplicationManager* pApp) :Action(pApp)
 {}
 
@@ -39,10 +39,8 @@ void ActionSelect::Execute()
 		else
 		{
 			selectedFig->SetSelected(true);
+			selectedFig->PrintInfo(pGUI);
+
 		}
-	}
-	else
-	{
-		pGUI->ClearStatusBar();
 	}
 }

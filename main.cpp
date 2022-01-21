@@ -1,5 +1,6 @@
 #include "ApplicationManager.h"
 #include "GUI\GUI.h"
+int CFigure::counter = 0; //*****v2*******
 
 int main()
 {
