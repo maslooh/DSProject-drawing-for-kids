@@ -93,6 +93,9 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_CHNG_FILL_CLR:return CHNG_FILL_CLR;
 			//maslooh ***v3***
 			case ITM_DELETE:return DEL;
+		
+			//v3.1***************************
+			case ITM_SAVE: return SAVE;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -190,9 +193,10 @@ void GUI::CreateDrawToolBar() const
 	//********v2********
 	MenuItemImages[ITM_CHNG_DRAW_CLR] = "images\\MenuItems\\drawcolor1.jpg";
 	MenuItemImages[ITM_CHNG_FILL_CLR] = "images\\MenuItems\\fillcolor.jpg";
+	//********v3********
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Menu_Save.jpg";
 	//maslooh ***v3***
-	MenuItemImages[ITM_DELETE]= "images\\MenuItems\\delete.jpg";
-
+	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\delete.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 	
