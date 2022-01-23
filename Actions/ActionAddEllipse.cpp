@@ -4,6 +4,7 @@
 #include "..\ApplicationManager.h"
 
 #include "..\GUI\GUI.h"
+#include <math.h>
 
 ActionAddEllipse::ActionAddEllipse(ApplicationManager* pApp) :Action(pApp)
 {}
@@ -35,6 +36,7 @@ void ActionAddEllipse::Execute()
 	//Read 2nd point and store in point P2
 	pGUI->GetPointClicked(P2.x, P2.y);
 
+
 	pGUI->ClearStatusBar();
 	if (P1.y < UI.ToolBarHeight || P2.y < UI.ToolBarHeight
 		|| P1.y>UI.height - UI.StatusBarHeight || P2.y>UI.height - UI.StatusBarHeight)
@@ -43,8 +45,15 @@ void ActionAddEllipse::Execute()
 	}
 	else 
 	{
+		Point topLeft;
+		topLeft.x = P1.x < P2.x ? P1.x : P2.x;
+		topLeft.y = P1.y < P2.y ? P1.y : P2.y;
+
+		Point bottomRight;
+		bottomRight.x = topLeft.x + abs(P1.x - P2.x);
+		bottomRight.y = topLeft.y + abs(P1.y - P2.y);
 		//Step 3 - Create a ellipse with the parameters read from the user
-		CEllipse* E = new CEllipse(P1, P2, ellipGfxInfo);
+		CEllipse* E = new CEllipse(topLeft, bottomRight, ellipGfxInfo);
 
 		//Step 4 - Add the ellipse to the list of figures
 		pManager->AddFigure(E);
