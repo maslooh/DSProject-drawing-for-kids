@@ -36,6 +36,8 @@ public:
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig); //Adds a new figure to the FigList
 	void DeleteFigure(); //delets a figure ***v3***
+	void changeFillColor(color FillClr); //***v3***** changes selected figures fill color
+	void changeDrawColor(color drawClr); //***v3***** changes selected figures border color
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 		
 	// -- Interface Management Functions	
