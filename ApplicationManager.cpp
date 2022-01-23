@@ -120,7 +120,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
-//Reads a color from the color toolbar
+//Reads a color from the color toolbar *************v2*************
 bool ApplicationManager::GetColor(color& inputColor) //v2
 {
 
@@ -189,6 +189,27 @@ void ApplicationManager::DeleteFigure()
 		{
 			delete FigList[i];
 			FigList[i] = NULL;
+		}
+	}
+}
+//**********v3**************
+void ApplicationManager::changeFillColor(color FillClr)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i] && FigList[i]->IsSelected())
+		{
+			FigList[i]->ChngFillClr(FillClr);
+		}
+	}
+}
+void ApplicationManager::changeDrawColor(color drawClr)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i] && FigList[i]->IsSelected())
+		{
+			FigList[i]->ChngDrawClr(drawClr);
 		}
 	}
 }

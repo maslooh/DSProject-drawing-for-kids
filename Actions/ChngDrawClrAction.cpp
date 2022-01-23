@@ -19,6 +19,7 @@ void ChngDrawClrAction::Execute() {
 
 	if (IsColor) {
 		pGUI->setCrntDrawColor(DrawClr);
+		pManager->changeDrawColor(DrawClr);
 	}
 
 }

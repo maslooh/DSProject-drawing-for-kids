@@ -20,6 +20,7 @@ void ChngFillClrAction::Execute() {
 	if (IsColor) {
 		pGUI->setIsFilled(true);
 		pGUI->setCrntFillColor(FillClr);
+		pManager->changeFillColor(FillClr);
 	}
 
 }
