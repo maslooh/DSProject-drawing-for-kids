@@ -36,10 +36,10 @@ public:
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig); //Adds a new figure to the FigList
 	void DeleteFigure(); //delets a figure ***v3***
-	void changeFillColor(color FillClr); //***v3***** changes selected figures fill color
-	void changeDrawColor(color drawClr); //***v3***** changes selected figures border color
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-		
+	//fadwa ****v3****
+	void SendFigureBack();		// send figure back
+	void BringFigureFront();	// bring figure front
 	// -- Interface Management Functions	
 	GUI *GetGUI() const; //Return pointer to the interface
 	void UpdateInterface() const;	//Redraws all the drawing window	
