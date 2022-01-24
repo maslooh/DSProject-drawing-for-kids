@@ -26,6 +26,9 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_CHNG_FILL_CLR,		//Change fill color item in menu
 	//maslooh *****v3*****
 	ITM_DELETE,             //delete selected items
+	//fadwa ****v3****
+	ITM_BACK,              //to send the selected figure to back
+	ITM_FRONT,             //to bring the selected figure to front
 	
 	//TODO: Add more items names here
 
