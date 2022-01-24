@@ -1,11 +1,10 @@
 #include "CHexagon.h"
 
-//fadwa ****v3****
-CHexagon::CHexagon(Point P1, int len, int _height, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
+CHexagon::CHexagon(Point P1, int len, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	TopLeftCorner = P1;
 	length = len;
-	height = _height;
+	height = 2 * length * sin(60 * M_PI / 180);
 }
 
 

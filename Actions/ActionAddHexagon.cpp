@@ -54,12 +54,11 @@ void ActionAddHexagon::Execute()
 	{
 		//2.2- Calcuate hexagon side legnth
 		//The square side length would be the longer distance between the two points coordinates
-		int topLength = abs(P1.x - P2.x);
-		int height = abs(P1.y - P2.y);
+		int SideLength = max(abs(P1.x - P2.x), abs(P1.y - P2.y));
 
 
 		//Step 3 - Create a hexagon with the parameters read from the user
-		CHexagon* R = new CHexagon(topLeft, topLength, height, hexaGfxInfo);
+		CHexagon* R = new CHexagon(topLeft, SideLength, hexaGfxInfo);
 		//Step 4 - Add the hexagon to the list of figures
 		pManager->AddFigure(R);
 	}
