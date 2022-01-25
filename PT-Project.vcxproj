@@ -131,9 +131,12 @@
   <ItemGroup>
     <ClCompile Include="Actions\ActionAddEllipse.cpp" />
     <ClCompile Include="Actions\ActionAddHexagon.cpp" />
+    <ClCompile Include="Actions\ActionBringFront.cpp" />
     <ClCompile Include="Actions\ActionDelete.cpp" />
+    <ClCompile Include="Actions\ActionSendBack.cpp" />
     <ClCompile Include="Actions\ChngDrawClrAction.cpp" />
     <ClCompile Include="Actions\ChngFillClrAction.cpp" />
+    <ClCompile Include="Actions\ToPlayAction.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -184,9 +187,12 @@
   <ItemGroup>
     <ClInclude Include="Actions\ActionAddEllipse.h" />
     <ClInclude Include="Actions\ActionAddHexagon.h" />
+    <ClInclude Include="Actions\ActionBringFront.h" />
     <ClInclude Include="Actions\ActionDelete.h" />
+    <ClInclude Include="Actions\ActionSendBack.h" />
     <ClInclude Include="Actions\ChngDrawClrAction.h" />
     <ClInclude Include="Actions\ChngFillClrAction.h" />
+    <ClInclude Include="Actions\ToPlayAction.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -222,17 +228,25 @@
     <ClInclude Include="DEFS.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="images\MenuItems\back.jpg" />
     <Image Include="images\MenuItems\Black.jpg" />
     <Image Include="images\MenuItems\Blue.jpg" />
+    <Image Include="images\MenuItems\byBoth.jpg" />
+    <Image Include="images\MenuItems\byClr.jpg" />
+    <Image Include="images\MenuItems\byType.jpg" />
+    <Image Include="images\MenuItems\delete.jpg" />
     <Image Include="images\MenuItems\delete.png" />
     <Image Include="images\MenuItems\drawcolor1.jpg" />
     <Image Include="images\MenuItems\fillcolor.jpg" />
+    <Image Include="images\MenuItems\front.jpg" />
+    <Image Include="images\MenuItems\game.jpg" />
     <Image Include="images\MenuItems\Green.jpg" />
     <Image Include="images\MenuItems\Menu_Elps.jpg" />
     <Image Include="images\MenuItems\Menu_Exit.jpg" />
     <Image Include="images\MenuItems\Menu_Hexa.jpg" />
     <Image Include="images\MenuItems\Menu_Sqr.JPG" />
     <Image Include="images\MenuItems\Red.jpg" />
+    <Image Include="images\MenuItems\sndBack.jpg" />
     <Image Include="images\MenuItems\White.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

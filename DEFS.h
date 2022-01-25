@@ -37,6 +37,11 @@ enum ActionType //The actions supported (you can add more if needed)
 	SET_GREEN,		//pick green color
 	SET_BLUE,		//pick blue color
 
+	//REEM ****V3****
+	P_BY_TYPE,		//Pick and hide, by type
+	P_BY_COLOR,		//Pick and hide, by color
+	P_BY_BOTH,		//Pick and hide, by type and color
+
 };
 
 struct Point	//To be used for figures points

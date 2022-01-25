@@ -6,6 +6,9 @@
 #include "Actions/ChngDrawClrAction.h" //v2
 #include "Actions/ChngFillClrAction.h" //v2
 #include "Actions/ActionDelete.h" //v3
+#include "Actions/ActionSendBack.h" //fadwa ****v3****
+#include "Actions/ActionBringFront.h" //fadwa ****v3****
+#include "Actions/ToPlayAction.h"
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -85,6 +88,15 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			newAct = new ActionDelete(this); //***v3***
 			break;
 
+		case SEND_BACK:
+			newAct = new ActionSendBack(this); //fadwa ****v3****
+			break;
+		case BRNG_FRNT:
+			newAct = new ActionBringFront(this); //fadwa ****v3****
+			break;
+		case TO_PLAY:
+			newAct = new ToPlayAction(this);
+			break;
 		case EXIT:
 			///create ExitAction here
 			
@@ -120,7 +132,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
-//Reads a color from the color toolbar *************v2*************
+//Reads a color from the color toolbar
 bool ApplicationManager::GetColor(color& inputColor) //v2
 {
 
@@ -167,7 +179,6 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 {
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
-	
 	for (int i=FigCount-1;i>=0;i--)
 	{
 		if (FigList[i]&&FigList[i]->InPoint(x,y))//********v3*********
@@ -192,6 +203,60 @@ void ApplicationManager::DeleteFigure()
 		}
 	}
 }
+///////////////////////////////////////////////////////////////////////////////////////////
+//fadwa ****v3****
+void ApplicationManager::SendFigureBack()
+{
+	int flag = 0;
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			flag = 1;
+			//selected figure to send it to back
+			CFigure* tempFigure = FigList[i];
+			//shift figures before it a forward step
+			for (int j = i; j > 0; j--)
+			{
+				FigList[j] = FigList[j - 1];
+			}
+			//send a figure to the beginning of the figure list
+			FigList[0] = tempFigure;
+		}
+	}
+	if (!flag)
+		pGUI->PrintMessage("there isn't any selected figure");
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+//fadwa ****v3****
+void ApplicationManager::BringFigureFront()
+{
+	int flag = 0;
+	int maxToCheck = FigCount;
+	for (int i = 0; i < maxToCheck; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			flag = 1;
+			//selected figure to bring it to front
+			CFigure* tempFigure = FigList[i];
+			//shift figures after it a back step
+			for (int j = i; j < FigCount-1; j++)
+			{
+				FigList[j] = FigList[j + 1];
+			}
+			//bring a figure to the end of the figure list
+			FigList[FigCount-1] = tempFigure;
+			//to not checked the current figure again
+			maxToCheck--;
+			i--;
+		}
+	}
+	if (!flag)
+		pGUI->PrintMessage("there isn't any selected figure");
+}
+
+
 //**********v3**************
 void ApplicationManager::changeFillColor(color FillClr)
 {
