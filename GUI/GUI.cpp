@@ -93,6 +93,11 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_CHNG_FILL_CLR:return CHNG_FILL_CLR;
 			//maslooh ***v3***
 			case ITM_DELETE:return DEL;
+			//fadwa ****v3****
+			case ITM_BACK:return SEND_BACK;
+			case ITM_FRONT:return BRNG_FRNT;
+			//reem ****v3***
+			case ITM_TO_PLAY:return TO_PLAY;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -134,6 +139,23 @@ ActionType GUI::MapInputToActionType() const
 		//[3] User clicks on the status bar
 		return STATUS;
 	}
+	else if (UI.InterfaceMode == MODE_PLAY)//GUI is in PLAY mode
+	{
+
+		if (y >= 0 && y < UI.ToolBarHeight) 
+		{
+
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			switch (ClickedItemOrder)
+			{
+			case ITM_BY_TYPE:return P_BY_TYPE;
+			case ITM_BY_COLOR:return P_BY_COLOR;
+			case ITM_BY_BOTH:return P_BY_BOTH;
+			case ITM_TO_DRAW:return TO_DRAW;
+			default: return EMPTY;
+			}
+		}
+	}//end of if
 	else	//GUI is in PLAY mode
 	{
 		///TODO:
@@ -192,8 +214,13 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_CHNG_FILL_CLR] = "images\\MenuItems\\fillcolor.jpg";
 	//maslooh ***v3***
 	MenuItemImages[ITM_DELETE]= "images\\MenuItems\\delete.jpg";
+	//fadwa ****v3****
+	MenuItemImages[ITM_BACK] = "images\\MenuItems\\sndBack.jpg";
+	MenuItemImages[ITM_FRONT] = "images\\MenuItems\\front.jpg";
+	MenuItemImages[ITM_TO_PLAY] = "images\\MenuItems\\game.jpg";//***v3*** reem
 
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
+
 
 	
 
@@ -211,12 +238,30 @@ void GUI::CreateDrawToolBar() const
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-
+//*****v3**** reem
 void GUI::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
-}
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
+	string PlayMenuItems[PLAY_ITM_COUNT];
+	PlayMenuItems[ITM_BY_TYPE] = "images\\MenuItems\\byType.jpg";
+	PlayMenuItems[ITM_BY_COLOR] = "images\\MenuItems\\byClr.jpg";
+	PlayMenuItems[ITM_BY_BOTH] = "images\\MenuItems\\byBoth.jpg";
+	PlayMenuItems[ITM_TO_DRAW] = "images\\MenuItems\\back.jpg";
+
+	for (int i = 0; i < PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(PlayMenuItems[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+
+}// end of play menu
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::CreateColorToolBar() const //v2******************************************
 {

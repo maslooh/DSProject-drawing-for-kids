@@ -21,29 +21,35 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_SQUR,		//Square item in menu
 	ITM_ELPS,		//Ellipse item in menu
 	ITM_HEXA,		//Hexa item in menu
+	
+	
+	//TODO: Add more items names here
 	//*************v2*****************
 	ITM_CHNG_DRAW_CLR,		//Change draw color item in menu
 	ITM_CHNG_FILL_CLR,		//Change fill color item in menu
 	//maslooh *****v3*****
 	ITM_DELETE,             //delete selected items
-	
-	//TODO: Add more items names here
+	//fadwa ****v3****
+	ITM_BACK,              //to send the selected figure to back
+	ITM_FRONT,             //to bring the selected figure to front
+	//reem ***v3***
+	ITM_TO_PLAY,
 
 	ITM_EXIT,		//Exit item
 	
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 	
 };
-
+//*******v3******** reem
 enum PlayMenuItem //The items of the Play menu (you should add more items)
 {
-	//Note: Items are ordered here as they appear in menu
-	//If you want to change the menu items order, change the order here
-	
-	//TODO: Add more items names here
+	ITM_BY_TYPE,	//Play and hide by type item in menu
+	ITM_BY_COLOR,	//Play and hide by color item in menu
+	ITM_BY_BOTH,	//Play and hide by both color and type item in menu
+	ITM_TO_DRAW,	// RETURN To draw mode item in menu
 
 	PLAY_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
-	
+
 };
 
 //v2***********************************************
