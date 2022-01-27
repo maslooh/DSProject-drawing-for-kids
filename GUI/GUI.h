@@ -33,7 +33,9 @@ public:
 
 	void CreateColorToolBar() const;//v2  creates Color picker toolbar & menu
 
-	void ClearStatusBar() const;	//Clears the status bar
+	void ClearStatusBar() const;
+	void CreateSizeBar() const;
+	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
 	
 	// -- Figures Drawing functions
@@ -47,7 +49,9 @@ public:
 	void PrintMessage(string msg) const;	//Print a message on Status bar
 
 	color getCrntDrawColor() const;	//get current drwawing color
-	color getCrntFillColor() const;	//get current filling color
+	color getCrntFillColor() const;
+	void setCrntBKGrandColor(color c);
+	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
 	//v2********************************************************
 	bool getIsFilled() const; //get current filled state

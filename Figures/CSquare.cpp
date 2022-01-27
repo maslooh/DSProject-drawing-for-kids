@@ -53,3 +53,64 @@ void  CSquare::Save(ofstream& OutFile)
 		OutFile << "NON-FILLED\n";
 
 }
+/////////alaa//////////
+void CSquare::SetID(int ind)
+{
+	ID = ind;
+}
+void CSquare::Load(ifstream& Infile)
+{
+	this->FigGfxInfo.BorderWdth = 5;
+	this->Selected = false;
+	//SetSelected(false);
+	string s;
+	Infile >> this->ID >> this->TopLeftCorner.x >> this->TopLeftCorner.y
+		>> this->length;
+
+	Infile >> s;
+	this->FigGfxInfo.DrawClr = GetStrinColor(s);
+
+	Infile >> s;
+
+	if (!(s == "NON-FILLED"))
+		this->FigGfxInfo.FillClr = GetStrinColor(s);
+	else
+		this->FigGfxInfo.isFilled = false;
+
+
+}
+CSquare::CSquare() {};
+void CSquare::Resize(GUI* pGUI, float size)
+{
+
+
+	float length_test = length;
+	Point test1 = TopLeftCorner;
+	Point test2;
+	test2.x = test1.x + length;
+	test2.y = test1.y + length;
+	length_test *= size;
+	test2.x = test1.x + length_test;
+	test2.y = test1.y + length_test;
+	if (test1.y < UI.ToolBarHeight ||
+		test2.y>UI.height - UI.StatusBarHeight || test2.x > UI.width + UI.wx || test1.x < UI.wx)
+	{
+
+		pGUI->PrintMessage("Square size will be more than Dwawing Area");
+		Sleep(1000);
+	}
+	else if (length_test < 20)
+
+	{
+		pGUI->PrintMessage("Square size will be very small");
+		Sleep(1000);
+	}
+	else
+	{
+		TopLeftCorner = test1;
+		length = length_test;
+		//PrintInfo(pGUI);
+	}
+
+
+}

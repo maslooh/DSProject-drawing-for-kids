@@ -41,6 +41,14 @@ enum ActionType //The actions supported (you can add more if needed)
 	P_BY_TYPE,		//Pick and hide, by type
 	P_BY_COLOR,		//Pick and hide, by color
 	P_BY_BOTH,		//Pick and hide, by type and color
+	// alaa
+	BACK1,
+	HALF,
+	QUARTER,
+	DOUBLE1,
+	QUADRUPLE,
+	
+
 
 };
 
@@ -53,6 +61,7 @@ struct GfxInfo	//Graphical info of each figure (you may add more members)
 	color FillClr;	//Fill color of the figure
 	bool isFilled;	//Figure Filled or not
 	int BorderWdth;	//Width of figure borders
+	color backgroundclr; //fill backgroud color //alaa
 
 };
 

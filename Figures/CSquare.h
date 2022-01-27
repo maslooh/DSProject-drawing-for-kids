@@ -13,7 +13,15 @@ public:
 	virtual void DrawMe(GUI* pOut) const;
 	virtual bool InPoint(int x, int y) ;//*****v2*******
 	virtual void PrintInfo(GUI* pGUI);
-	virtual void Save(ofstream& OutFile);//****v3.1***** amany
+	//****v3.1***** amany
+	virtual void Save(ofstream& OutFile);
+	/////////alaaa
+	void SetID(int ind);
+	virtual void Load(ifstream& Infile);
+	CSquare();
+
+	void Resize(GUI* pGUI, float size);
+	
 };
 
 #endif

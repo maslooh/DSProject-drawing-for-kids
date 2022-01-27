@@ -47,7 +47,14 @@ public:
 	string ConvertToString(color c);   //Convert from Color Type to String Type //***v3.1**
 	// -- Interface Management Functions	
 	GUI *GetGUI() const; //Return pointer to the interface
-	void UpdateInterface() const;	//Redraws all the drawing window	
+	void UpdateInterface() const;	//Redraws all the drawing window
+	/////////alaaaaaa
+	color ConvertToColor(string s);
+
+
+	void ResetFiglist();
+	void Resize_figure(GUI* pGUI, float size) const;
+	bool AnySelected();
 };
 
 #endif
