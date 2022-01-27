@@ -375,10 +375,9 @@ color ApplicationManager::ConvertToColor(string s)
 
 void ApplicationManager::ResetFiglist()
 {
-	
+	FigCount = 0;
 	for (int i = 0; i < FigCount; i++)
 		FigList[i] = NULL;
-	FigCount = 0;
 }
 void ApplicationManager::Resize_figure(GUI* pGUI, float size) const {
 	for (int i = 0; i < FigCount; i++)
