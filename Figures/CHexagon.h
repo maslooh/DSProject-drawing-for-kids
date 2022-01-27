@@ -15,6 +15,7 @@ public:
 	virtual void DrawMe(GUI* pOut) const;
 	virtual bool InPoint(int x, int y);//*****v2*******
 	virtual void PrintInfo(GUI* pGUI);
+	virtual void Save(ofstream& OutFile);//******v3.1**** amany
 };
 
 #endif

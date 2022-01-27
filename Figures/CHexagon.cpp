@@ -1,5 +1,6 @@
 #include "CHexagon.h"
-
+#include <iostream>
+#include <string>
 //fadwa ****v3****
 CHexagon::CHexagon(Point P1, int len, int _height, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -37,4 +38,16 @@ void CHexagon::PrintInfo(GUI* pGUI) //*****v2*******
 	/*msg += ", area=";
 	msg += GetArea();*/
 	pGUI->PrintMessage(msg);
+}
+
+void CHexagon::Save(ofstream& OutFile)
+{
+	OutFile << "Hexagon\t" << this->ID << "\t" << this->TopLeftCorner.x << "\t" << this->TopLeftCorner.y << "\t"
+		<< this->colorToString(this->FigGfxInfo.DrawClr) << "\t";
+	if (this->FigGfxInfo.isFilled)
+		OutFile << this->colorToString(this->FigGfxInfo.FillClr) << "\t";
+	else
+		OutFile << "NON-FILLED\t";
+	//OutFile << this->FigGfxInfo.Resize_Factor << "\n";
+	OutFile << this->length << "\t"<< this->height<<"\n";
 }

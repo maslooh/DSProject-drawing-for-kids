@@ -21,3 +21,17 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
+//****v3.1**** amany
+string CFigure::colorToString(color c)
+{
+	if (c == BLACK) return "BLACK";
+	else if (c == WHITE) return "WHITE";
+	else if (c == BLUE) return "BLUE";
+	else if (c == RED) return "RED";
+	else if (c == YELLOW) return "YELLOW";
+	else if (c == GREEN) return "GREEN";
+	else if (c == LIGHTGOLDENRODYELLOW) return "LIGHTGOLDENRODYELLOW";
+	else if (c == MAGENTA) return "MAGENTA";
+	else if (c == TURQUOISE) return "TURQUOISE";
+	return "COLOR";
+}

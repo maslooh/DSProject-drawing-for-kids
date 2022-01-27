@@ -1,8 +1,11 @@
 #ifndef CFIGURE_H
 #define CFIGURE_H
 
-#include "..\defs.h"
+#include "..\DEFS.h"
 #include "..\GUI\GUI.h"
+//***v3.1*** amany
+#include<fstream>
+#include<string>
 
 //Base class for all figures
 class CFigure
@@ -25,6 +28,7 @@ public:
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 
+
 	virtual bool InPoint(int x, int y) = 0;  // if point inside the figure
 
 	///The following functions should be supported by the figure class
@@ -36,8 +40,8 @@ public:
 	//virtual void Rotate() = 0;	//Rotate the figure
 	//virtual void Resize() = 0;	//Resize the figure
 	//virtual void Move() = 0;		//Move the figure
-
-	//virtual void Save(ofstream &OutFile) = 0;	//Save the figure parameters to the file
+	string colorToString(color c) ; //Convert color to string ***v3.1**
+	virtual void Save(ofstream& OutFile) = 0;// Save the figure parameters to the file ***v3.1*** amany
 	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 
 	virtual void PrintInfo(GUI* pGUI) = 0;	//print all figure info on the status bar

@@ -39,3 +39,15 @@ void CEllipse::PrintInfo(GUI* pGUI)//*****v2*******
 	msg += GetArea();*/
 	pGUI->PrintMessage(msg);
 }
+//******v3.1****** amany
+void CEllipse::Save(ofstream& OutFile)      //Write yourself on the file
+{
+	OutFile << "Ellipse\t" << ID << "\t" << this->firstPoint.x << "\t" << this->firstPoint.y << "\t"
+		<< this->colorToString(this->FigGfxInfo.DrawClr) << "\t";
+	if (this->FigGfxInfo.isFilled)
+		OutFile << this->colorToString(this->FigGfxInfo.FillClr) << "\t";
+	else
+		OutFile << "NON-FILLED\t";
+	//OutFile << this->FigGfxInfo.Resize_Factor << "\n";
+	OutFile << this->secondPoint.x << "\t" << this->secondPoint.y << "\n";
+}

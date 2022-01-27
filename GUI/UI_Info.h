@@ -34,6 +34,8 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_FRONT,             //to bring the selected figure to front
 	//reem ***v3***
 	ITM_TO_PLAY,
+	//anmany*****v3.1*******
+	ITM_SAVE,       //save item in menu
 
 	ITM_EXIT,		//Exit item
 	

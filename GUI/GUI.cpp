@@ -98,6 +98,8 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_FRONT:return BRNG_FRNT;
 			//reem ****v3***
 			case ITM_TO_PLAY:return TO_PLAY;
+			//amany********v3.1****************
+			case ITM_SAVE: return SAVE;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -217,7 +219,10 @@ void GUI::CreateDrawToolBar() const
 	//fadwa ****v3****
 	MenuItemImages[ITM_BACK] = "images\\MenuItems\\sndBack.jpg";
 	MenuItemImages[ITM_FRONT] = "images\\MenuItems\\front.jpg";
-	MenuItemImages[ITM_TO_PLAY] = "images\\MenuItems\\game.jpg";//***v3*** reem
+	//***v3*** reem
+	MenuItemImages[ITM_TO_PLAY] = "images\\MenuItems\\game.jpg";
+	//amany******v3.1********
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Menu_Save.jpg";
 
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 

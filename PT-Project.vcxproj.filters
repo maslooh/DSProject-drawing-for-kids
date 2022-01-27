@@ -126,9 +126,6 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c">
       <Filter>CMUgraphicsLib\JPEG</Filter>
     </ClCompile>
-    <ClCompile Include="Figures\CFigure.cpp">
-      <Filter>Figures Classes</Filter>
-    </ClCompile>
     <ClCompile Include="ApplicationManager.cpp">
       <Filter>Application Manager</Filter>
     </ClCompile>
@@ -155,6 +152,10 @@
     <ClCompile Include="Actions\ActionSendBack.cpp" />
     <ClCompile Include="Actions\ActionBringFront.cpp" />
     <ClCompile Include="Actions\ToPlayAction.cpp" />
+    <ClCompile Include="Actions\Exit.cpp" />
+    <ClCompile Include="Actions\Save.cpp" />
+    <ClCompile Include="Figures\CFigure.cpp" />
+    <ClCompile Include="CMUgraphicsLib\colors.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -252,6 +253,8 @@
     <ClInclude Include="Actions\ActionSendBack.h" />
     <ClInclude Include="Actions\ActionBringFront.h" />
     <ClInclude Include="Actions\ToPlayAction.h" />
+    <ClInclude Include="Actions\Exit.h" />
+    <ClInclude Include="Actions\Save.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\MenuItems\Menu_Elps.jpg" />
@@ -274,5 +277,9 @@
     <Image Include="images\MenuItems\front.jpg" />
     <Image Include="images\MenuItems\game.jpg" />
     <Image Include="images\MenuItems\sndBack.jpg" />
+    <Image Include="images\MenuItems\Menu_Save.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
   </ItemGroup>
 </Project>

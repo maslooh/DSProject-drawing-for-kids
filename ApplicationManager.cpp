@@ -9,9 +9,12 @@
 #include "Actions/ActionSendBack.h" //fadwa ****v3****
 #include "Actions/ActionBringFront.h" //fadwa ****v3****
 #include "Actions/ToPlayAction.h"
+#include"Actions/Save.h"//v3.1
+#include"Actions/Exit.h"//v3.1
 #include <string>
 #include <string.h>
 #include <iostream>
+
 
 
 //Constructor
@@ -97,9 +100,13 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case TO_PLAY:
 			newAct = new ToPlayAction(this);
 			break;
-		case EXIT:
+		case SAVE:    //****v3.1****
+			newAct = new Save(this, FigCount);
+			break;
+
+		case EXIT:  //****v3.1*****
 			///create ExitAction here
-			
+			newAct = new Exit(this);
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -159,7 +166,7 @@ bool ApplicationManager::GetColor(color& inputColor) //v2
 	case SET_GREEN:
 		inputColor = GREEN;
 		break;
-
+		
 	case SET_BLUE:
 		inputColor = BLUE;
 		break;
@@ -268,6 +275,7 @@ void ApplicationManager::changeFillColor(color FillClr)
 		}
 	}
 }
+//**********v3**************
 void ApplicationManager::changeDrawColor(color drawClr)
 {
 	for (int i = 0; i < FigCount; i++)
@@ -277,6 +285,30 @@ void ApplicationManager::changeDrawColor(color drawClr)
 			FigList[i]->ChngDrawClr(drawClr);
 		}
 	}
+}
+
+//**********v3.1**************
+void ApplicationManager::SaveFig(ofstream& Out)   //Call the Save function for each Figure
+{
+
+	for (int i = 0; i < FigCount; ++i)
+		if (FigList[i]) {
+			FigList[i]->Save(Out);
+		}
+}
+//**********v3.1**************
+string ApplicationManager::ConvertToString(color c)   //Convert from Color Type to String Type
+{
+	if (c == BLACK) return "BLACK";
+	else if (c == WHITE) return "WHITE";
+	else if (c == BLUE) return "BLUE";
+	else if (c == RED) return "RED";
+	else if (c == YELLOW) return "YELLOW";
+	else if (c == GREEN) return "GREEN";
+	else if (c == LIGHTGOLDENRODYELLOW) return "LIGHTGOLDENRODYELLOW";
+	else if (c == MAGENTA) return "MAGENTA";
+	else if (c == TURQUOISE) return "TURQUOISE";
+	return "COLOR";
 }
 //==================================================================================//
 //							Interface Management Functions							//

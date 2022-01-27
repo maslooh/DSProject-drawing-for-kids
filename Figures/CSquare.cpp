@@ -39,3 +39,17 @@ void CSquare::PrintInfo(GUI* pGUI)//*****v2*******
 	msg += GetArea();*/
 	pGUI->PrintMessage(msg);
 }
+
+//******v3.1***** amany
+void  CSquare::Save(ofstream& OutFile)
+{
+	OutFile << "Square\t"
+		<< ID << "\t" << this->TopLeftCorner.x << "\t" << this->TopLeftCorner.y << "\t"
+		<< this->length << "\t"
+		<< this->colorToString(this->FigGfxInfo.DrawClr) << "\t";
+	if (this->FigGfxInfo.isFilled)
+		OutFile << this->colorToString(this->FigGfxInfo.FillClr) << "\n";
+	else
+		OutFile << "NON-FILLED\n";
+
+}

@@ -2,7 +2,7 @@
 #define APPLICATION_MANAGER_H
 
 #include "DEFS.h"
-#include "Figures\CFigure.h"
+#include "Figures/CFigure.h"
 #include "GUI\GUI.h"
 
 class Action;	//Forward Declaration
@@ -42,6 +42,9 @@ public:
 	void BringFigureFront();	// bring figure front
 	void changeFillColor(color FillClr);
 	void changeDrawColor(color drawClr);
+	//amany ****v3****
+	void SaveFig(ofstream& Out);  //function to call Save Function for each figure***v3.1**	
+	string ConvertToString(color c);   //Convert from Color Type to String Type //***v3.1**
 	// -- Interface Management Functions	
 	GUI *GetGUI() const; //Return pointer to the interface
 	void UpdateInterface() const;	//Redraws all the drawing window	
