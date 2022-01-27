@@ -11,6 +11,8 @@
 #include "Actions/ToPlayAction.h"
 #include"Actions/Save.h"//v3.1
 #include"Actions/Exit.h"//v3.1
+#include"Actions/Load.h"//v4
+#include"Actions/Resize.h"//v4
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -102,6 +104,12 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case SAVE:    //****v3.1****
 			newAct = new Save(this, FigCount);
+			break;
+		case LOAD:
+			newAct = new  Load(this);
+			break;
+		case RESIZE:  ///alaa
+			newAct = new Resize(this);
 			break;
 
 		case EXIT:  //****v3.1*****
@@ -316,7 +324,9 @@ string ApplicationManager::ConvertToString(color c)   //Convert from Color Type 
 
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
-{	
+{    ///alaa
+	pGUI->ClearDrawArea();
+
 	for(int i=0; i<FigCount; i++)
 	{
 		if (FigList[i])//********v3**********
@@ -337,4 +347,54 @@ ApplicationManager::~ApplicationManager()
 		delete FigList[i];
 	delete pGUI;
 	
+}
+/////////alaa////////
+color ApplicationManager::ConvertToColor(string s)
+{
+	if (s == "BLACK")
+		return BLACK;
+	if (s == "BLUE")
+		return BLUE;
+	if (s == "WHITE")
+		return WHITE;
+	if (s == "RED")
+		return RED;
+	if (s == "YELLOW")
+		return YELLOW;
+	if (s == "GREEN")
+		return GREEN;
+	if (s == "LIGHTGOLDENRODYELLOW")
+		return LIGHTGOLDENRODYELLOW;
+	if (s == "MAGENTA")
+		return MAGENTA;
+	if (s == "TURQUOISE")
+		return TURQUOISE;
+	return BLACK;
+}
+
+
+void ApplicationManager::ResetFiglist()
+{
+	FigCount = 0;
+	for (int i = 0; i < FigCount; i++)
+		FigList[i] = NULL;
+}
+void ApplicationManager::Resize_figure(GUI* pGUI, float size) const {
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			FigList[i]->Resize(pGUI, size);
+		}
+	}
+}
+bool ApplicationManager::AnySelected() {
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			return true;
+		}
+	}
+	return false;
 }

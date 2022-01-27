@@ -100,6 +100,10 @@ ActionType GUI::MapInputToActionType() const
 			case ITM_TO_PLAY:return TO_PLAY;
 			//amany********v3.1****************
 			case ITM_SAVE: return SAVE;
+			/// alaa
+			case ITM_LOAD: return LOAD;
+			case ITM_RESIZE: return RESIZE;
+
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -158,6 +162,39 @@ ActionType GUI::MapInputToActionType() const
 			}
 		}
 	}//end of if
+	/// <summary>
+	/// /alaa resize
+	/// </summary>
+	/// <returns></returns>
+	else if (UI.InterfaceMode == MODE_SIZE)
+	{
+		//[1] If user clicks on the Toolbar
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			//Check whick Menu item was clicked
+			//==> This assumes that menu items are lined up horizontally <==
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			//Divide x coord of the point clicked by the menu item width (int division)
+			//If division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
+			switch (ClickedItemOrder)
+			{
+			case ITM_BACK1:  return BACK1;
+			case ITM_QUARTER: return QUARTER;
+			case ITM_HALF: return HALF;
+
+			case ITM_DOUBLE:   return DOUBLE1;
+			case ITM_QUADRUPLE: return QUADRUPLE;
+
+			default: return EMPTY;
+			}
+		}
+		//[2] User clicks on the drawing area
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		{
+			return DRAWING_AREA;
+		}
+		return STATUS;
+	}
 	else	//GUI is in PLAY mode
 	{
 		///TODO:
@@ -214,6 +251,8 @@ void GUI::CreateDrawToolBar() const
 	//********v2********
 	MenuItemImages[ITM_CHNG_DRAW_CLR] = "images\\MenuItems\\drawcolor1.jpg";
 	MenuItemImages[ITM_CHNG_FILL_CLR] = "images\\MenuItems\\fillcolor.jpg";
+	/////alaa
+	MenuItemImages[ITM_RESIZE] = "images\\MenuItems\\Resize.jpg";
 	//maslooh ***v3***
 	MenuItemImages[ITM_DELETE]= "images\\MenuItems\\delete.jpg";
 	//fadwa ****v3****
@@ -223,6 +262,10 @@ void GUI::CreateDrawToolBar() const
 	MenuItemImages[ITM_TO_PLAY] = "images\\MenuItems\\game.jpg";
 	//amany******v3.1********
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Menu_Save.jpg";
+	/// alaa
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Menu_Load.jpg";
+	
+	
 
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
@@ -250,7 +293,9 @@ void GUI::CreatePlayToolBar() const
 	///TODO: write code to create Play mode menu
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
+	
+	
+		pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
 	string PlayMenuItems[PLAY_ITM_COUNT];
 	PlayMenuItems[ITM_BY_TYPE] = "images\\MenuItems\\byType.jpg";
 	PlayMenuItems[ITM_BY_COLOR] = "images\\MenuItems\\byClr.jpg";
@@ -295,15 +340,43 @@ void GUI::CreateColorToolBar() const //v2***************************************
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+///v3 resize 
+void GUI::CreateSizeBar() const
+{
+	UI.InterfaceMode = MODE_SIZE;
+	// clear the prev tool bar
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	//pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 
+
+	string MenuItemImages[SIZE_ITM_COUNT];
+	MenuItemImages[ITM_BACK1] = "images\\MenuItems\\back.jpg";
+	MenuItemImages[ITM_QUARTER] = "images\\MenuItems\\quartter.jpg";
+	MenuItemImages[ITM_HALF] = "images\\MenuItems\\hallf.jpg";
+	MenuItemImages[ITM_DOUBLE] = "images\\MenuItems\\two.jpg";
+	MenuItemImages[ITM_QUADRUPLE] = "images\\MenuItems\\four.jpg";
+
+
+	///TODO: write code to create Size mode menu
+	for (int i = 0; i < SIZE_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+}
 void GUI::ClearDrawArea() const
 {
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);	
-	
+	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 void GUI::PrintMessage(string msg) const	//Prints a message on status bar
 {
@@ -322,7 +395,10 @@ color GUI::getCrntDrawColor() const	//get current drwawing color
 color GUI::getCrntFillColor() const	//get current filling color
 {	return UI.FillColor;	}
 //////////////////////////////////////////////////////////////////////////////////////////
-	
+//alaa
+void GUI::setCrntBKGrandColor(color c) {
+	UI.BkGrndColor = c;
+}
 int GUI::getCrntPenWidth() const		//get current pen width
 {	return UI.PenWidth;	}
 

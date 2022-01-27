@@ -35,3 +35,28 @@ string CFigure::colorToString(color c)
 	else if (c == TURQUOISE) return "TURQUOISE";
 	return "COLOR";
 }
+////////////alaaaaa
+color CFigure::GetStrinColor(string s) const
+{
+	if (s == "BLACK")
+		return BLACK;
+	if (s == "BLUE")
+		return BLUE;
+	if (s == "WHITE")
+		return WHITE;
+	if (s == "RED")
+		return RED;
+	if (s == "YELLOW")
+		return YELLOW;
+	if (s == "GREEN")
+		return GREEN;
+	if (s == "LIGHTGOLDENRODYELLOW")
+		return LIGHTGOLDENRODYELLOW;
+	if (s == "MAGENTA")
+		return MAGENTA;
+	if (s == "TURQUOISE")
+		return TURQUOISE;
+	return BLACK;
+}
+CFigure::CFigure() {};
+

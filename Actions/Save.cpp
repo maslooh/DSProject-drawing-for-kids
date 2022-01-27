@@ -36,7 +36,7 @@ void Save::Execute()
 		OutFile.open(szFileName );  // create a file with FileName and .txt exetention
 
 		OutFile << pManager->ConvertToString(UI.DrawColor) << "\t" << pManager->ConvertToString(UI.FillColor) << "\t"<< pManager->ConvertToString(UI.BkGrndColor);  //Write the Current Draw Color 
-		OutFile << FigCnt << "\n";  //and Current Fill Color and in the second line write the number of figures 
+		OutFile << "\n" << FigCnt << "\n";  //and Current Fill Color and in the second line write the number of figures 
 		pManager->SaveFig(OutFile);  //Now Start Saving each figure proccess 
 		OutFile.close(); //Good By :)
 

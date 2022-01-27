@@ -42,7 +42,12 @@ public:
 	//virtual void Move() = 0;		//Move the figure
 	string colorToString(color c) ; //Convert color to string ***v3.1**
 	virtual void Save(ofstream& OutFile) = 0;// Save the figure parameters to the file ***v3.1*** amany
-	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
+	virtual void SetID(int ind) = 0;  //set the id id of each function
+	virtual void Load(ifstream& Infile) = 0;	//Load the figure parameters to the file
+	virtual color GetStrinColor(string s) const;  //convert from string to color type
+	virtual void Resize(GUI* pGUI, float size) = 0;	//Resize the figure
+
+	CFigure();
 
 	virtual void PrintInfo(GUI* pGUI) = 0;	//print all figure info on the status bar
 };
