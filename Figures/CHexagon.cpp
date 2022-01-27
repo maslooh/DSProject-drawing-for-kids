@@ -83,7 +83,7 @@ void CHexagon::Resize(GUI* pGUI, float size)
 
 	float length_test = length * size;
 	float height_test = height * size;
-	if ((height_test * 2) > UI.height - UI.StatusBarHeight || (length_test * 1.5) > UI.width + UI.wx || (length_test * 0.5) < UI.wx)
+	if((TopLeftCorner.y + height_test) > UI.height - UI.StatusBarHeight || (TopLeftCorner.x + length_test * 1.5) > UI.width + UI.wx || (TopLeftCorner.x + length_test * 0.5) < UI.wx)
 	{
 
 		pGUI->PrintMessage("Hexagon size will be more than Dwawing Area");
