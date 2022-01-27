@@ -296,6 +296,7 @@ void GUI::CreatePlayToolBar() const
 	
 	
 		pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
+		//pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 	string PlayMenuItems[PLAY_ITM_COUNT];
 	PlayMenuItems[ITM_BY_TYPE] = "images\\MenuItems\\byType.jpg";
 	PlayMenuItems[ITM_BY_COLOR] = "images\\MenuItems\\byClr.jpg";
@@ -319,7 +320,8 @@ void GUI::CreateColorToolBar() const //v2***************************************
 	// clear tool bar
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
+	//pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 
 	string MenuItemImages2[COLOR_ITM_COUNT];
 
