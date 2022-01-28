@@ -1,6 +1,33 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  main.cpp
+  GUI.cpp
+C:\projects\DS project\Project\DSProject-drawing-for-kids\GUI\GUI.cpp(505,40): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\projects\DS project\Project\DSProject-drawing-for-kids\GUI\GUI.cpp(505,40): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\GUI\GUI.cpp(505,82): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\projects\DS project\Project\DSProject-drawing-for-kids\GUI\GUI.cpp(505,82): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\GUI\GUI.cpp(506,31): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\projects\DS project\Project\DSProject-drawing-for-kids\GUI\GUI.cpp(506,31): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\GUI\GUI.cpp(506,82): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\projects\DS project\Project\DSProject-drawing-for-kids\GUI\GUI.cpp(506,82): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  CFigure.cpp
+  ApplicationManager.cpp
+  ToPlayAction.cpp
+  Save.cpp
   Resize.cpp
   Load.cpp
+  Exit.cpp
+  ChngFillClrAction.cpp
+  ChngDrawClrAction.cpp
+  ActionSendBack.cpp
+  ActionSelect.cpp
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Actions\ActionSelect.cpp(16,8): warning C4101: 'P1': unreferenced local variable
+  ActionDelete.cpp
+  ActionBringFront.cpp
+  ActionAddSquare.cpp
+  ActionAddHexagon.cpp
+  ActionAddEllipse.cpp
   Generating Code...
+C:\projects\DS project\Project\DSProject-drawing-for-kids\GUI\GUI.cpp(207): warning C4715: 'GUI::MapInputToActionType': not all control paths return a value
+  LINK : .\Debug\PT Project.exe not found or not built by the last incremental link; performing full link
 ActionAddEllipse.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   PT-Project.vcxproj -> C:\projects\DS project\Project\DSProject-drawing-for-kids\Debug\PT Project.exe

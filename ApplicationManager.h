@@ -24,8 +24,7 @@ private:
 public:	
 	ApplicationManager(); 
 	~ApplicationManager();
-
-	void Run();		//to run the application
+	void Run();//to run the application
 	
 	// -- Action-Related Functions
 	Action* CreateAction(ActionType);
@@ -42,6 +41,8 @@ public:
 	void BringFigureFront();	// bring figure front
 	void changeFillColor(color FillClr);
 	void changeDrawColor(color drawClr);
+	int areFiguresSelected();
+	void  unselectAll();
 	//amany ****v3****
 	void SaveFig(ofstream& Out);  //function to call Save Function for each figure***v3.1**	
 	string ConvertToString(color c);   //Convert from Color Type to String Type //***v3.1**

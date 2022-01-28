@@ -15,15 +15,16 @@ class GUI
 {
 public:	
 	window* pWind;	//Pointer to the Graphics Window
+	//****v3.1*** maslooh
+	Point lastPointClicked;
 public:
 	GUI();	
 	~GUI();	
 	window* CreateWind(int, int, int , int) const; //creates the application window
-
 	/////////// Input Functoinality  /////////////////
 	void GetPointClicked(int &x, int &y) const;//Get coordinate where user clicks
 	string GetSrting() const ;	 //Returns a string entered by the user
-	ActionType MapInputToActionType() const; //Read the user click and map to an action
+	ActionType MapInputToActionType() ; //Read the user click and map to an action
 
 
 	/////////// Output Functoinality  ////////////////
@@ -58,6 +59,10 @@ public:
 	void setCrntDrawColor(color);
 	void setCrntFillColor(color);
 	void setIsFilled(bool);
+
+	//****v3.1***maslooh
+	void setLastPointClicked(int x, int y);
+	Point getLastPointClicked();
 };
 
 

@@ -52,8 +52,6 @@ void ApplicationManager::Run()
 	}while(ActType != EXIT);
 	
 }
-
-
 //==================================================================================//
 //								Actions Related Functions							//
 //==================================================================================//
@@ -196,7 +194,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 	//if this point (x,y) does not belong to any figure return NULL
 	for (int i=FigCount-1;i>=0;i--)
 	{
-		if (FigList[i]&&FigList[i]->InPoint(x,y))//********v3*********
+		if (FigList[i]->InPoint(x,y))//********v3*********
 		{
 			return FigList[i];
 		}
@@ -205,19 +203,28 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 	return NULL;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
-//**********v3***********
+//**********v3.1***********updated maslooh
 void ApplicationManager::DeleteFigure()
 {
-
+	int flag = 1;
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]&&FigList[i]->IsSelected())
+		if (FigList[i]->IsSelected())
 		{
-			delete FigList[i];
-			FigList[i] = NULL;
+			flag = 0;
+				for (int j = i; j < FigCount - 1; j++)
+				{
+					swap(FigList[j], FigList[j + 1]);
+				}
+				delete FigList[FigCount-1];
+				FigList[FigCount-1] = NULL;
+				this->FigCount--;
+				i--;
 		}
 	}
 }
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 //fadwa ****v3****
 void ApplicationManager::SendFigureBack()
@@ -240,7 +247,7 @@ void ApplicationManager::SendFigureBack()
 		}
 	}
 	if (!flag)
-		pGUI->PrintMessage("there isn't any selected figure");
+		pGUI->PrintMessage("please select a figure first");
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 //fadwa ****v3****
@@ -268,7 +275,7 @@ void ApplicationManager::BringFigureFront()
 		}
 	}
 	if (!flag)
-		pGUI->PrintMessage("there isn't any selected figure");
+		pGUI->PrintMessage("please select a figure first");
 }
 
 
@@ -277,7 +284,7 @@ void ApplicationManager::changeFillColor(color FillClr)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i] && FigList[i]->IsSelected())
+		if (FigList[i]->IsSelected())
 		{
 			FigList[i]->ChngFillClr(FillClr);
 		}
@@ -288,10 +295,31 @@ void ApplicationManager::changeDrawColor(color drawClr)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i] && FigList[i]->IsSelected())
+		if (FigList[i]->IsSelected())
 		{
 			FigList[i]->ChngDrawClr(drawClr);
 		}
+	}
+}
+//**********v3.1**************
+int ApplicationManager::areFiguresSelected()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+//**********v3.1************** maslooh
+void ApplicationManager::unselectAll()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->SetSelected(false);
 	}
 }
 
@@ -300,9 +328,7 @@ void ApplicationManager::SaveFig(ofstream& Out)   //Call the Save function for e
 {
 
 	for (int i = 0; i < FigCount; ++i)
-		if (FigList[i]) {
 			FigList[i]->Save(Out);
-		}
 }
 //**********v3.1**************
 string ApplicationManager::ConvertToString(color c)   //Convert from Color Type to String Type
@@ -329,10 +355,7 @@ void ApplicationManager::UpdateInterface() const
 
 	for(int i=0; i<FigCount; i++)
 	{
-		if (FigList[i])//********v3**********
-		{
 			FigList[i]->DrawMe(pGUI); 	//Call Draw function (virtual member fn)
-		}
 	}	
 }
 ////////////////////////////////////////////////////////////////////////////////////

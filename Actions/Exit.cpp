@@ -2,7 +2,7 @@
 #include "Windows.h"
 #include"Save.h"
 #include"..\ApplicationManager.h"
-
+//******v3.1*********** amany
 Exit::Exit(ApplicationManager* pApp) : Action(pApp)
 {}
 
@@ -20,17 +20,10 @@ void Exit::Execute()
     switch (msgboxID)
     {
     case IDYES:
-        // TODO: add code
-       // delete pAct;	//Action is not needed any more ==> delete it
-       // pAct = NULL;
-     
-        pManager->CreateAction(SAVE);
-     
+        Action* pAct =pManager->CreateAction(SAVE);
+        pManager->ExecuteAction(pAct);
+        pManager->Run();
         break;
-    case IDNO:
-        // TODO: add code
-        break;
-
     }
 
 

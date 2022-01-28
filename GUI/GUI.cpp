@@ -24,7 +24,6 @@ GUI::GUI()
 	UI.StatusBarColor = TURQUOISE;
 	UI.PenWidth = 3;	//width of the figures frames
 
-	
 	//Create the output window
 	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
 	//Change the title
@@ -66,11 +65,12 @@ string GUI::GetSrting() const
 }
 
 //This function reads the position where the user clicks to determine the desired action
-ActionType GUI::MapInputToActionType() const
+ActionType GUI::MapInputToActionType() 
 {	
 	int x,y;
-	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
+	pWind->WaitMouseClick(x,y);	//Get the coordinates of the user click
+	//****v3.1*** maslooh
+	setLastPointClicked(x, y);
 	if(UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the Toolbar
@@ -111,6 +111,7 @@ ActionType GUI::MapInputToActionType() const
 		//[2] User clicks on the drawing area
 		if ( y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
+
 			return DRAWING_AREA;	
 		}
 		
@@ -420,6 +421,17 @@ void GUI::setCrntFillColor(color c) {
 void GUI::setIsFilled(bool isF) {
 	UI.isFilled = isF;
 }
+//****v3.1*** maslooh
+void GUI::setLastPointClicked(int x, int y)
+{
+	lastPointClicked.x = x;
+	lastPointClicked.y = y;
+}
+//****v3.1*** maslooh
+Point GUI::getLastPointClicked()
+{
+	return lastPointClicked;
+}
 
 //======================================================================================//
 //								Figures Drawing Functions								//
@@ -446,8 +458,6 @@ void GUI::DrawSquare(Point P1, int length, GfxInfo RectGfxInfo, bool selected) c
 
 	
 	pWind->DrawRectangle(P1.x, P1.y, P1.x +length, P1.y+length, style);
-	//pWind->DrawLine(P1.x, P1.y, P1.x + length, P1.y + length, style);
-
 }
 void GUI::DrawEllipse(Point p1, Point p2, GfxInfo ellipGfxInfo, bool selected) const
 {

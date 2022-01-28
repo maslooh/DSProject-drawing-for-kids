@@ -1,7 +1,7 @@
 #include "ActionSelect.h"
 
 #include "..\ApplicationManager.h"
-
+#include <Windows.h>
 #include "..\GUI\GUI.h"
 #include <string>
 #include <string.h>
@@ -25,21 +25,32 @@ void ActionSelect::Execute()
 	//pGUI->PrintMessage("click on object to select it");
 
 	////Read point and store in point P1
-	pGUI->GetPointClicked(P1.x, P1.y);
-
-	CFigure* selectedFig = pManager->GetFigure(P1.x, P1.y);
+	//****v3.1*** maslooh
+	Point drawAreaPoint = pGUI->getLastPointClicked();
 	
-
+	CFigure* selectedFig = pManager->GetFigure(drawAreaPoint.x, drawAreaPoint.y);
+	
 	if (selectedFig)
 	{
 		if (selectedFig->IsSelected())
 		{
 			selectedFig->SetSelected(false);
+			pGUI->ClearStatusBar();
 		}
-		else
+		else 	//****v3.1*** maslooh
 		{
-			selectedFig->SetSelected(true);
-			selectedFig->PrintInfo(pGUI);
+			if (GetKeyState(VK_CONTROL)& 0x8000)
+			{
+				selectedFig->SetSelected(true);
+				selectedFig->PrintInfo(pGUI);
+			}
+			else //****v3.1*** maslooh
+			{
+				pManager->unselectAll();
+				selectedFig->SetSelected(true);
+				selectedFig->PrintInfo(pGUI);
+			}
+			
 		}
 	}
 }

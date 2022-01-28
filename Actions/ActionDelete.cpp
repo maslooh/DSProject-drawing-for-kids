@@ -1,19 +1,43 @@
 #include "ActionDelete.h"
-
 #include "..\ApplicationManager.h"
-
 #include "..\GUI\GUI.h"
+#include "WinUser.h"
 #include <string>
 #include <string.h>
 #include <iostream>
-//*****************************v3***********************************
+//*****************************v3.1 maslooh***********************************
 ActionDelete::ActionDelete(ApplicationManager* pApp) :Action(pApp)
 {}
 
 //Execute the action
 void ActionDelete::Execute()
 {
-	GUI* pGUI = pManager->GetGUI();
-	pGUI->ClearDrawArea();
-	pManager->DeleteFigure();
+    GUI* pGUI = pManager->GetGUI();
+    //****v3.1 maslooh****
+    if (pManager->areFiguresSelected()) 
+    {
+        int msgboxID = MessageBoxW(
+            NULL,
+            (LPCWSTR)L"Delete?!\n",
+            (LPCWSTR)L"Confirm Delete",
+            MB_ICONWARNING | MB_YESNOCANCEL | MB_DEFBUTTON2
+        );
+        switch (msgboxID)
+        {
+            case IDYES:
+                pGUI->ClearDrawArea();
+                pManager->DeleteFigure();
+                pGUI->ClearStatusBar();
+                break;
+            case IDCANCEL:
+            case IDNO:
+                pGUI->PrintMessage("Deletion canceled!");
+                break;
+        }
+        
+    }
+    else 
+    {
+        pGUI-> PrintMessage("please select a figure first");
+    }
 }
