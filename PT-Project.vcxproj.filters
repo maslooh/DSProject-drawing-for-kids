@@ -156,6 +156,8 @@
     <ClCompile Include="Actions\Save.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
+    <ClCompile Include="Actions\Load.cpp" />
+    <ClCompile Include="Actions\Resize.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -255,6 +257,8 @@
     <ClInclude Include="Actions\ToPlayAction.h" />
     <ClInclude Include="Actions\Exit.h" />
     <ClInclude Include="Actions\Save.h" />
+    <ClInclude Include="Actions\Load.h" />
+    <ClInclude Include="Actions\Resize.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\MenuItems\Menu_Elps.jpg" />
