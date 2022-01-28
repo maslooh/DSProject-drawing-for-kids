@@ -1,0 +1,5 @@
+GREEN    RED  MAGENTA
+3
+Square  1   480  120  150  BLUE  RED
+Ellipse  15  80   150  300 350  GREEN BLUE
+Hexagon  20  470  300  170  70  RED   NON-FILLED
