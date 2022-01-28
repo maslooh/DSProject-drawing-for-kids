@@ -59,7 +59,7 @@ void CHexagon::SetID(int ind)
 
 void CHexagon::Load(ifstream& Infile)
 {
-	this->FigGfxInfo.BorderWdth = 5;
+	this->FigGfxInfo.BorderWdth = 3;
 	this->Selected = false;
 //	SetSelected(false) ;
 	string s;
