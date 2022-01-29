@@ -14,9 +14,10 @@ void ActionDelete::Execute()
 {
     GUI* pGUI = pManager->GetGUI();
     //****v3.1 maslooh****
-    if (pManager->areFiguresSelected()) 
+    if (pManager->areFiguresSelected()) //check if there is a figure selected
     {
-        int msgboxID = MessageBoxW(
+        //opening a dialuge box to confirm deletion
+        int msgboxID = MessageBoxW( 
             NULL,
             (LPCWSTR)L"Delete?!\n",
             (LPCWSTR)L"Confirm Delete",
@@ -24,12 +25,12 @@ void ActionDelete::Execute()
         );
         switch (msgboxID)
         {
-            case IDYES:
+            case IDYES://case of confirmation
                 pGUI->ClearDrawArea();
                 pManager->DeleteFigure();
                 pGUI->ClearStatusBar();
                 break;
-            case IDCANCEL:
+            case IDCANCEL://case of cnacel or deny the deletion
             case IDNO:
                 pGUI->PrintMessage("Deletion canceled!");
                 break;
@@ -38,6 +39,7 @@ void ActionDelete::Execute()
     }
     else 
     {
+        //message to user to ask him to select a shape
         pGUI-> PrintMessage("please select a figure first");
     }
 }

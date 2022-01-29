@@ -26,26 +26,27 @@ void ActionSelect::Execute()
 
 	////Read point and store in point P1
 	//****v3.1*** maslooh
+	//getting the last clcked point on the interface
 	Point drawAreaPoint = pGUI->getLastPointClicked();
-	
+	//getting a pointer to a selected figure
 	CFigure* selectedFig = pManager->GetFigure(drawAreaPoint.x, drawAreaPoint.y);
 	
-	if (selectedFig)
+	if (selectedFig)//check if the pointer is not null
 	{
-		if (selectedFig->IsSelected())
+		if (selectedFig->IsSelected())//case if the shape is already selected
 		{
 			selectedFig->SetSelected(false);
 			pGUI->ClearStatusBar();
 		}
 		else 	//****v3.1*** maslooh
 		{
-			if (GetKeyState(VK_CONTROL)& 0x8000)
+			if (GetKeyState(VK_CONTROL)& 0x8000)//check if control buttom is down to use multible select 
 			{
 				selectedFig->SetSelected(true);
 				selectedFig->PrintInfo(pGUI);
 			}
 			else //****v3.1*** maslooh
-			{
+			{    //single shape select
 				pManager->unselectAll();
 				selectedFig->SetSelected(true);
 				selectedFig->PrintInfo(pGUI);

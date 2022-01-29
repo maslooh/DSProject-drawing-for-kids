@@ -22,7 +22,6 @@ void Exit::Execute()
     case IDYES:
         Action* pAct =pManager->CreateAction(SAVE);
         pManager->ExecuteAction(pAct);
-        pManager->Run();
         break;
     }
 

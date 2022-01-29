@@ -132,6 +132,9 @@
     <ClCompile Include="Actions\ActionAddEllipse.cpp" />
     <ClCompile Include="Actions\ActionAddHexagon.cpp" />
     <ClCompile Include="Actions\ActionBringFront.cpp" />
+    <ClCompile Include="Actions\ActionChngBkGrndClr.cpp" />
+    <ClCompile Include="Actions\ActionChngDrawClr.cpp" />
+    <ClCompile Include="Actions\ActionChngFillClr.cpp" />
     <ClCompile Include="Actions\ActionDelete.cpp" />
     <ClCompile Include="Actions\ActionSendBack.cpp" />
     <ClCompile Include="Actions\ChngDrawClrAction.cpp" />
@@ -193,6 +196,9 @@
     <ClInclude Include="Actions\ActionAddEllipse.h" />
     <ClInclude Include="Actions\ActionAddHexagon.h" />
     <ClInclude Include="Actions\ActionBringFront.h" />
+    <ClInclude Include="Actions\ActionChngBkGrndClr.h" />
+    <ClInclude Include="Actions\ActionChngDrawClr.h" />
+    <ClInclude Include="Actions\ActionChngFillClr.h" />
     <ClInclude Include="Actions\ActionDelete.h" />
     <ClInclude Include="Actions\ActionSendBack.h" />
     <ClInclude Include="Actions\ChngDrawClrAction.h" />

@@ -51,7 +51,7 @@ void Load::Execute()
 	//InFile.open("C:/Users/lolom/Downloads/Compressed/DSProject-drawing-for-kids-main/Actions/load.txt",ios ::out ); 
 	//////////////////////////
 	// int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow)
-	{
+
 		HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED |
 			COINIT_DISABLE_OLE1DDE);
 		if (SUCCEEDED(hr))
@@ -83,31 +83,8 @@ void Load::Execute()
 							//MessageBoxW(NULL, pszFilePath, L"File Path", MB_OK);
 							InFile.open(pszFilePath);
 							CoTaskMemFree(pszFilePath);
-						}
-						pItem->Release();
-					}
-				}
-				pFileOpen->Release();
-			}
-			CoUninitialize();
-		}
-	
-	}
-	////////////////////
-
-	////////////////////////////////////////////////////////////////////////////
-	if (InFile.fail())       //Check if the FileName is a valid name
-	{
-		pGUI->PrintMessage("Invalid file");
-		return;
-	}
-	else
-	{
-		InFile >> DrawClr >> FillClr >> bkgclr;     //Read the Current FillColor and DrawColor
-		/*UI.DrawColor = pManager->ConvertToColor(DrawClr);  //Convert them
-		UI.FillColor = pManager->ConvertToColor(FillClr);  //To Color
-		UI.BkGrndColor = pManager->ConvertToColor(bkgclr);
-		*/
+							///////////////
+							InFile >> DrawClr >> FillClr >> bkgclr;     //Read the Current FillColor and DrawColor
 		if (FillClr == "NON-FILLED")
 		{
 			pGUI->setIsFilled(false);
@@ -147,10 +124,18 @@ void Load::Execute()
 		pManager->UpdateInterface();     //Draw the figure list
 		pGUI->PrintMessage("Graph Loaded Successfully");
 		//pGUI->ClearStatusBar();
-		
-
-
-	}
+						
+							/////////////////////
+						}
+						pItem->Release();
+					}
+				}
+				pFileOpen->Release();
+			}
+			CoUninitialize();
+		}
+	
+	
 	
 
 }

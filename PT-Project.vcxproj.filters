@@ -158,6 +158,9 @@
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
     <ClCompile Include="Actions\Load.cpp" />
     <ClCompile Include="Actions\Resize.cpp" />
+    <ClCompile Include="Actions\ActionChngBkGrndClr.cpp" />
+    <ClCompile Include="Actions\ActionChngDrawClr.cpp" />
+    <ClCompile Include="Actions\ActionChngFillClr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -259,6 +262,9 @@
     <ClInclude Include="Actions\Save.h" />
     <ClInclude Include="Actions\Load.h" />
     <ClInclude Include="Actions\Resize.h" />
+    <ClInclude Include="Actions\ActionChngBkGrndClr.h" />
+    <ClInclude Include="Actions\ActionChngDrawClr.h" />
+    <ClInclude Include="Actions\ActionChngFillClr.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\MenuItems\Menu_Elps.jpg" />

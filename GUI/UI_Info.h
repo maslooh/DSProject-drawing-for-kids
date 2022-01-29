@@ -29,6 +29,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	//*************v2*****************
 	ITM_CHNG_DRAW_CLR,		//Change draw color item in menu
 	ITM_CHNG_FILL_CLR,		//Change fill color item in menu
+	ITM_CHNG_BKGRND_CLR,    //Change background color item in menu  //v4 eslam
 	ITM_RESIZE,    //v3 resize 
 	//maslooh *****v3*****
 	ITM_DELETE,             //delete selected items

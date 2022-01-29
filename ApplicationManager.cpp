@@ -3,8 +3,9 @@
 #include"Actions\ActionAddEllipse.h" //v1
 #include"Actions\ActionAddHexagon.h" //v1
 #include "Actions\ActionSelect.h" //v2
-#include "Actions/ChngDrawClrAction.h" //v2
-#include "Actions/ChngFillClrAction.h" //v2
+#include "Actions/ActionChngDrawClr.h" //v2
+#include "Actions/ActionChngFillClr.h" //v2
+#include "Actions/ActionChngBkGrndClr.h"
 #include "Actions/ActionDelete.h" //v3
 #include "Actions/ActionSendBack.h" //fadwa ****v3****
 #include "Actions/ActionBringFront.h" //fadwa ****v3****
@@ -79,12 +80,17 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 			
 			//Color Change Actions//
-		case CHNG_DRAW_CLR: //v2
-			newAct = new ChngDrawClrAction(this);
+		//Color Change Actions//
+		case CHNG_DRAW_CLR:		//v4 eslam
+			newAct = new ActionChngDrawClr(this);
 			break;
 
-		case CHNG_FILL_CLR: //v2
-			newAct = new ChngFillClrAction(this);
+		case CHNG_FILL_CLR:		//v4 eslam
+			newAct = new ActionChngFillClr(this);
+			break;
+
+		case CHNG_BK_CLR:		//v4 eslam
+			newAct = new ActionChngBkGrndClr(this);
 			break;
 
 		case DEL:
@@ -191,7 +197,6 @@ bool ApplicationManager::GetColor(color& inputColor) //v2
 CFigure *ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 {
 	//If a figure is found return a pointer to it.
-	//if this point (x,y) does not belong to any figure return NULL
 	for (int i=FigCount-1;i>=0;i--)
 	{
 		if (FigList[i]->InPoint(x,y))//********v3*********
@@ -199,7 +204,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 			return FigList[i];
 		}
 	}
-
+	//if this point (x,y) does not belong to any figure return NULL
 	return NULL;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -352,7 +357,6 @@ string ApplicationManager::ConvertToString(color c)   //Convert from Color Type 
 void ApplicationManager::UpdateInterface() const
 {    ///alaa
 	pGUI->ClearDrawArea();
-
 	for(int i=0; i<FigCount; i++)
 	{
 			FigList[i]->DrawMe(pGUI); 	//Call Draw function (virtual member fn)

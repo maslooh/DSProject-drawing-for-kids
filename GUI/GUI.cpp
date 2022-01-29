@@ -91,6 +91,7 @@ ActionType GUI::MapInputToActionType()
 			//v2***************************
 			case ITM_CHNG_DRAW_CLR:return CHNG_DRAW_CLR;
 			case ITM_CHNG_FILL_CLR:return CHNG_FILL_CLR;
+			case ITM_CHNG_BKGRND_CLR:return CHNG_BK_CLR;	//v4 eslam
 			//maslooh ***v3***
 			case ITM_DELETE:return DEL;
 			//fadwa ****v3****
@@ -163,10 +164,7 @@ ActionType GUI::MapInputToActionType()
 			}
 		}
 	}//end of if
-	/// <summary>
-	/// /alaa resize
-	/// </summary>
-	/// <returns></returns>
+	
 	else if (UI.InterfaceMode == MODE_SIZE)
 	{
 		//[1] If user clicks on the Toolbar
@@ -236,7 +234,6 @@ void GUI::ClearStatusBar() const
 void GUI::CreateDrawToolBar() const
 {
 	UI.InterfaceMode = MODE_DRAW;
-
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
 	
@@ -259,6 +256,7 @@ void GUI::CreateDrawToolBar() const
 	//fadwa ****v3****
 	MenuItemImages[ITM_BACK] = "images\\MenuItems\\sndBack.jpg";
 	MenuItemImages[ITM_FRONT] = "images\\MenuItems\\front.jpg";
+	MenuItemImages[ITM_CHNG_BKGRND_CLR] = "images\\MenuItems\\Menu_Back.jpg";	//v4 eslam
 	//***v3*** reem
 	MenuItemImages[ITM_TO_PLAY] = "images\\MenuItems\\game.jpg";
 	//amany******v3.1********
