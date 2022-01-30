@@ -61,8 +61,7 @@ void CSquare::SetID(int ind)
 void CSquare::Load(ifstream& Infile)
 {
 	this->FigGfxInfo.BorderWdth = 3;
-	this->Selected = false;
-	//SetSelected(false);
+
 	string s;
 	Infile >> this->ID >> this->TopLeftCorner.x >> this->TopLeftCorner.y
 		>> this->length;
@@ -79,7 +78,11 @@ void CSquare::Load(ifstream& Infile)
 
 
 }
-CSquare::CSquare() {};
+CSquare::CSquare() 
+{
+	this->Selected = false;
+	this->isHidden = false;
+};
 void CSquare::Resize(GUI* pGUI, float size)
 {
 

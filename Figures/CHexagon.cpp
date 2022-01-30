@@ -5,8 +5,8 @@
 CHexagon::CHexagon(Point P1, int len, int _height, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	TopLeftCorner = P1;
-	length = len;
-	height = _height;
+	length = len<10 ? 10 : len;
+	height = _height<18 ? 18 : _height;
 }
 
 
@@ -60,8 +60,7 @@ void CHexagon::SetID(int ind)
 void CHexagon::Load(ifstream& Infile)
 {
 	this->FigGfxInfo.BorderWdth = 3;
-	this->Selected = false;
-//	SetSelected(false) ;
+
 	string s;
 	Infile >> this->ID >> this->TopLeftCorner.x >> this->TopLeftCorner.y
 		>> this->length >> this->height;
@@ -77,7 +76,11 @@ void CHexagon::Load(ifstream& Infile)
 
 
 }
-CHexagon::CHexagon() {};
+CHexagon::CHexagon() 
+{
+	this->Selected = false;
+	this->isHidden = false;
+};
 void CHexagon::Resize(GUI* pGUI, float size)
 {
 

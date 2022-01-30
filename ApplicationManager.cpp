@@ -7,13 +7,14 @@
 #include "Actions/ActionChngFillClr.h" //v2
 #include "Actions/ActionChngBkGrndClr.h"
 #include "Actions/ActionDelete.h" //v3
-#include "Actions/ActionSendBack.h" //fadwa ****v3****
-#include "Actions/ActionBringFront.h" //fadwa ****v3****
+#include "Actions/ActionSendBack.h" //****v3****
+#include "Actions/ActionBringFront.h" //****v3****
 #include "Actions/ToPlayAction.h"
 #include"Actions/Save.h"//v3.1
 #include"Actions/Exit.h"//v3.1
 #include"Actions/Load.h"//v4
 #include"Actions/Resize.h"//v4
+#include"Actions/PickByColor.h"//***v5
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -116,6 +117,10 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			newAct = new Resize(this);
 			break;
 
+		case P_BY_COLOR:   //***v5 
+			newAct = new PickByColor(this);
+			break;
+
 		case EXIT:  //****v3.1*****
 			///create ExitAction here
 			newAct = new Exit(this);
@@ -194,19 +199,30 @@ bool ApplicationManager::GetColor(color& inputColor) //v2
 }
 ////////////////////////////////////////////////////////////////////////////////////
 
-CFigure *ApplicationManager::GetFigure(int x, int y) const////*****v2*****
+CFigure* ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 {
 	//If a figure is found return a pointer to it.
-	for (int i=FigCount-1;i>=0;i--)
+	//if this point (x,y) does not belong to any figure return NULL
+	for (int i = FigCount - 1; i >= 0; i--)
 	{
-		if (FigList[i]->InPoint(x,y))//********v3*********
+		if (FigList[i]->InPoint(x, y) && !FigList[i]->isShapeHiddin())//********v3*********//***v5
 		{
 			return FigList[i];
 		}
 	}
-	//if this point (x,y) does not belong to any figure return NULL
 	return NULL;
 }
+
+//////////////////////////////////////
+//********v4 reem*********
+int ApplicationManager::getFigCount()const {
+	return FigCount;
+}
+CFigure* ApplicationManager::getFigList(int i) const
+{
+	return FigList[i];
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 //**********v3.1***********updated maslooh
 void ApplicationManager::DeleteFigure()
@@ -306,18 +322,6 @@ void ApplicationManager::changeDrawColor(color drawClr)
 		}
 	}
 }
-//**********v3.1**************
-int ApplicationManager::areFiguresSelected()
-{
-	for (int i = 0; i < FigCount; i++)
-	{
-		if (FigList[i]->IsSelected())
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
 
 //**********v3.1************** maslooh
 void ApplicationManager::unselectAll()
@@ -359,7 +363,10 @@ void ApplicationManager::UpdateInterface() const
 	pGUI->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
 	{
+		if (!FigList[i]->isShapeHiddin())//********v3**********//****v4 reem
+		{
 			FigList[i]->DrawMe(pGUI); 	//Call Draw function (virtual member fn)
+		}
 	}	
 }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -402,11 +409,14 @@ color ApplicationManager::ConvertToColor(string s)
 
 void ApplicationManager::ResetFiglist()
 {
-	
 	for (int i = 0; i < FigCount; i++)
+	{
 		FigList[i] = NULL;
+		delete FigList[i];
+	}
 	FigCount = 0;
 }
+
 void ApplicationManager::Resize_figure(GUI* pGUI, float size) const {
 	for (int i = 0; i < FigCount; i++)
 	{
@@ -416,7 +426,9 @@ void ApplicationManager::Resize_figure(GUI* pGUI, float size) const {
 		}
 	}
 }
-bool ApplicationManager::AnySelected() {
+/////////////////////////////////////////////
+bool ApplicationManager::AnySelected() 
+{
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i]->IsSelected())
