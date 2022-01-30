@@ -15,7 +15,7 @@ protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
-	
+	bool isHidden;
 	/// Add more parameters if needed.
 
 public:
@@ -50,6 +50,14 @@ public:
 	CFigure();
 
 	virtual void PrintInfo(GUI* pGUI) = 0;	//print all figure info on the status bar
+
+	//***v5 return the color of each figure in string
+	string GetFillClr();        
+
+	//*******reem v4********
+	void HideShape();
+	void displayShape();
+	bool isShapeHiddin();
 };
 
 #endif

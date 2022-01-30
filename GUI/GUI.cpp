@@ -147,24 +147,6 @@ ActionType GUI::MapInputToActionType()
 		//[3] User clicks on the status bar
 		return STATUS;
 	}
-	else if (UI.InterfaceMode == MODE_PLAY)//GUI is in PLAY mode
-	{
-
-		if (y >= 0 && y < UI.ToolBarHeight) 
-		{
-
-			int ClickedItemOrder = (x / UI.MenuItemWidth);
-			switch (ClickedItemOrder)
-			{
-			case ITM_BY_TYPE:return P_BY_TYPE;
-			case ITM_BY_COLOR:return P_BY_COLOR;
-			case ITM_BY_BOTH:return P_BY_BOTH;
-			case ITM_TO_DRAW:return TO_DRAW;
-			default: return EMPTY;
-			}
-		}
-	}//end of if
-	
 	else if (UI.InterfaceMode == MODE_SIZE)
 	{
 		//[1] If user clicks on the Toolbar
@@ -199,8 +181,27 @@ ActionType GUI::MapInputToActionType()
 		///TODO:
 		//perform checks similar to Draw mode checks above
 		//and return the correspoding action
-		return TO_PLAY;	//just for now. This should be updated
-	}	
+		//User clicks on the toolBar area
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			switch (ClickedItemOrder)
+			{
+			case ITM_BY_TYPE:return P_BY_TYPE;
+			case ITM_BY_COLOR:return P_BY_COLOR;
+			case ITM_BY_BOTH:return P_BY_BOTH;
+			case ITM_TO_DRAW:return TO_DRAW;
+			default: return EMPTY;
+			}
+		}
+		////User clicks on the drawing area
+		//if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		//{
+		//	return DRAWING_AREA;
+		//}
+		//return STATUS;
+	}
+
 
 }
 //======================================================================================//

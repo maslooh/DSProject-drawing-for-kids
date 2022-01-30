@@ -14,7 +14,7 @@ void ActionDelete::Execute()
 {
     GUI* pGUI = pManager->GetGUI();
     //****v3.1 maslooh****
-    if (pManager->areFiguresSelected()) //check if there is a figure selected
+    if (pManager->AnySelected()) //check if there is a figure selected
     {
         //opening a dialuge box to confirm deletion
         int msgboxID = MessageBoxW( 

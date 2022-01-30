@@ -60,8 +60,7 @@ void CEllipse::SetID(int ind)
 void CEllipse::Load(ifstream& Infile)
 {
 	this->FigGfxInfo.BorderWdth = 3;
-	this->Selected = false;
-	//SetSelected(false);
+
 	string s;
 	Infile >> this->ID >> this->firstPoint.x >> this->firstPoint.y
 		>> this->secondPoint.x >> this->secondPoint.y;
@@ -77,7 +76,11 @@ void CEllipse::Load(ifstream& Infile)
 
 
 }
-CEllipse::CEllipse() {};
+CEllipse::CEllipse() 
+{
+	this->Selected = false;
+	this->isHidden = false;
+};
 void CEllipse::Resize(GUI* pGUI, float size)
 {
 	Point test1 = firstPoint, test2 = secondPoint;

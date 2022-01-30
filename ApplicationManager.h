@@ -41,7 +41,7 @@ public:
 	void BringFigureFront();	// bring figure front
 	void changeFillColor(color FillClr);
 	void changeDrawColor(color drawClr);
-	int areFiguresSelected();
+	
 	void  unselectAll();
 	//amany ****v3****
 	void SaveFig(ofstream& Out);  //function to call Save Function for each figure***v3.1**	
@@ -56,6 +56,10 @@ public:
 	void ResetFiglist();
 	void Resize_figure(GUI* pGUI, float size) const;
 	bool AnySelected();
+
+	//***v4
+	int getFigCount() const;
+	CFigure* getFigList(int)const;
 };
 
 #endif
