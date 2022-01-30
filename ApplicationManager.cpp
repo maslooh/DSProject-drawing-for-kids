@@ -218,11 +218,19 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 int ApplicationManager::getFigCount()const {
 	return FigCount;
 }
+
 CFigure* ApplicationManager::getFigList(int i) const
 {
 	return FigList[i];
 }
-
+//***v5 
+bool ApplicationManager::hasDifferentColors() {
+	for (int i = 0; i < FigCount-1; i++) {
+		if (FigList[i]->GetFillClr() != FigList[i + 1]->GetFillClr())
+			return true;
+	}
+	return false;
+}
 ///////////////////////////////////////////////////////////////////////////////////////////
 //**********v3.1***********updated maslooh
 void ApplicationManager::DeleteFigure()

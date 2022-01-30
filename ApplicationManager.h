@@ -60,6 +60,8 @@ public:
 	//***v4
 	int getFigCount() const;
 	CFigure* getFigList(int)const;
+
+	bool hasDifferentColors();
 };
 
 #endif

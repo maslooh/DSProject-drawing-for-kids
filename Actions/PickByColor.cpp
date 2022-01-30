@@ -24,7 +24,8 @@ void PickByColor::Execute()
 	//selected random color
 	string playColor;
 
-	if (pManager->getFigCount() > 0)
+
+	if (pManager->hasDifferentColors())
 	{
 		//choose random color from existing figures (exclude the last selected color)
 		do 
@@ -97,7 +98,7 @@ void PickByColor::Execute()
 	}
 	else
 	{
-		pGUI->PrintMessage("Please draw any figures to play!");
+		pGUI->PrintMessage("Please draw figures with different colors to play!");
 	}
 }
 
