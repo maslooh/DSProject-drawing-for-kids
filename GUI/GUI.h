@@ -34,9 +34,8 @@ public:
 
 	void CreateColorToolBar() const;//v2  creates Color picker toolbar & menu
 
-	void ClearStatusBar() const;
+	void ClearStatusBar() const;//Clears the status bar
 	void CreateSizeBar() const;
-	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
 	
 	// -- Figures Drawing functions

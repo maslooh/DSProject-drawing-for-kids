@@ -161,6 +161,9 @@
     <ClCompile Include="Actions\ActionChngBkGrndClr.cpp" />
     <ClCompile Include="Actions\ActionChngDrawClr.cpp" />
     <ClCompile Include="Actions\ActionChngFillClr.cpp" />
+    <ClCompile Include="Actions\PickByColor.cpp" />
+    <ClCompile Include="Actions\backToDrawMode.cpp" />
+    <ClCompile Include="Actions\pickByType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -265,6 +268,9 @@
     <ClInclude Include="Actions\ActionChngBkGrndClr.h" />
     <ClInclude Include="Actions\ActionChngDrawClr.h" />
     <ClInclude Include="Actions\ActionChngFillClr.h" />
+    <ClInclude Include="Actions\PickByColor.h" />
+    <ClInclude Include="Actions\backToDrawMode.h" />
+    <ClInclude Include="Actions\pickByType.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\MenuItems\Menu_Elps.jpg" />

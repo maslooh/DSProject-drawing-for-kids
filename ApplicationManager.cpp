@@ -15,6 +15,8 @@
 #include"Actions/Load.h"//v4
 #include"Actions/Resize.h"//v4
 #include"Actions/PickByColor.h"//***v5
+#include "Actions/pickByType.h"//v4 reem
+#include "Actions/backToDrawMode.h" //v4reem
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -107,6 +109,15 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 		case TO_PLAY:
 			newAct = new ToPlayAction(this);
 			break;
+		case P_BY_TYPE:
+			newAct = new pickByType(this);
+			break;
+		case P_BY_COLOR:   //***v5 
+			newAct = new PickByColor(this);
+			break;
+		case TO_DRAW:
+			newAct = new backToDrawMode(this);
+			break;
 		case SAVE:    //****v3.1****
 			newAct = new Save(this, FigCount);
 			break;
@@ -117,9 +128,7 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			newAct = new Resize(this);
 			break;
 
-		case P_BY_COLOR:   //***v5 
-			newAct = new PickByColor(this);
-			break;
+		
 
 		case EXIT:  //****v3.1*****
 			///create ExitAction here
