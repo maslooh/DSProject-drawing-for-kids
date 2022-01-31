@@ -1,6 +1,3 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  pickByType.cpp
-  backToDrawMode.cpp
-  Generating Code...
-ActionAddEllipse.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  pickByBoth.cpp
   PT-Project.vcxproj -> C:\projects\DS project\Project\DSProject-drawing-for-kids\Debug\PT Project.exe

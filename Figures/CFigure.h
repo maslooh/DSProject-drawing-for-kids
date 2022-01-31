@@ -17,12 +17,12 @@ protected:
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	bool isHidden;
 	/// Add more parameters if needed.
-
+	string figureName;
 public:
 	CFigure(GfxInfo FigureGfxInfo);
 	void SetSelected(bool );	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
-
+	string getFigureName();
 	virtual void DrawMe(GUI*) const  = 0 ;		//Draw the figure
 	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color

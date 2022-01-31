@@ -5,6 +5,7 @@ CEllipse::CEllipse(Point P1, Point p2, GfxInfo FigureGfxInfo) :CFigure(FigureGfx
 {
 	firstPoint = P1;
 	secondPoint = p2;
+	figureName = "ELLIPSE";
 }
 
 

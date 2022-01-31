@@ -4,6 +4,7 @@ CSquare::CSquare(Point P1, int len, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo
 {
 	TopLeftCorner = P1;
 	length = len;
+	figureName = "SQUARE";
 }
 	
 

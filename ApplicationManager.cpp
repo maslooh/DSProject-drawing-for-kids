@@ -17,6 +17,7 @@
 #include"Actions/PickByColor.h"//***v5
 #include "Actions/pickByType.h"//v4 reem
 #include "Actions/backToDrawMode.h" //v4reem
+#include"Actions/pickByBoth.h"//****v5*** maslooh
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -114,6 +115,9 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 			break;
 		case P_BY_COLOR:   //***v5 
 			newAct = new PickByColor(this);
+			break;
+		case P_BY_BOTH:   //***v5*** maslooh
+			newAct = new PickByBoth(this);
 			break;
 		case TO_DRAW:
 			newAct = new backToDrawMode(this);
@@ -232,6 +236,14 @@ CFigure* ApplicationManager::getFigList(int i) const
 {
 	return FigList[i];
 }
+/**unhides all figuers after finishing a game in play mode*/ //***v5*** maslooh
+void ApplicationManager::displayAllFigures()
+{
+	for (int i = 0; i < FigCount; i++) {
+		FigList[i]->displayShape();
+	}
+}
+
 //***v5 
 bool ApplicationManager::hasDifferentColors() {
 	for (int i = 0; i < FigCount-1; i++) {
@@ -239,6 +251,17 @@ bool ApplicationManager::hasDifferentColors() {
 			return true;
 	}
 	return false;
+}
+//***v5*** maslooh
+/**this function returns a random figure from the figure list */
+CFigure* ApplicationManager::getRandomFigure()
+{
+	if (FigCount)
+	{
+		srand(time(NULL));
+		return FigList[rand() % FigCount];
+	}
+	return nullptr;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 //**********v3.1***********updated maslooh

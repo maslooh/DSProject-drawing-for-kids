@@ -60,7 +60,10 @@ public:
 	//***v4
 	int getFigCount() const;
 	CFigure* getFigList(int)const;
-
+	/**gets a random figure color from figure list*/ //***v5*** maslooh
+	CFigure* getRandomFigure();
+	/**unhides all figuers after finishing a game in play mode*/ //***v5*** maslooh
+	void displayAllFigures();
 	bool hasDifferentColors();
 };
 
