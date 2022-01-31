@@ -62,11 +62,11 @@ void PickByBoth::Execute()
 			}
 		}
 		//case of selecting all matching figures
-		pManager->displayAllFigures();
 		string finalMsg = "Finished ,your score is >> correct answers:" +
 			               to_string(correctAns) + " ,wrong answers: " + to_string(wrongAns);
-		Sleep(500);	
 		pGui->PrintMessage(finalMsg);
+		Sleep(500);	
+		pManager->displayAllFigures();
 	}
 	//case of empty figure list
 	else
