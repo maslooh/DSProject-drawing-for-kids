@@ -30,15 +30,20 @@ void CSquare::PrintInfo(GUI* pGUI)//*****v2*******
 	// print figure information
 	string msg = "ID=";
 	msg += to_string(ID);
-	msg += ", start Point>> X=";
+	msg += ", top left Point>> X=";
 	msg += to_string(TopLeftCorner.x);
 	msg += " Y=";
 	msg += to_string(TopLeftCorner.y);
 	msg += ", length=";
 	msg += to_string(length);
-	/*msg += ", area=";
-	msg += GetArea();*/
+	msg += ", area=";
+	msg += to_string(GetArea());
 	pGUI->PrintMessage(msg);
+}
+
+int CSquare::GetArea()
+{
+	return (pow(length, 2));
 }
 
 //******v3.1***** amany

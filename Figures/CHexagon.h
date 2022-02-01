@@ -21,6 +21,10 @@ public:
 	virtual void Load(ifstream& Infile);
 	CHexagon();
 	void Resize(GUI* pGUI, float size);
+
+	//***v5
+	float AreaTriangle(float, float, float, float, float, float);
+	int GetArea();
 };
 
 #endif

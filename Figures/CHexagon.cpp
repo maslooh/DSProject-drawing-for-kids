@@ -5,8 +5,8 @@
 CHexagon::CHexagon(Point P1, int len, int _height, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	TopLeftCorner = P1;
-	length = len<10 ? 10 : len;
-	height = _height<18 ? 18 : _height;
+	length = len<10 ? -10 : len;
+	height = _height<18 ? -18 : _height;
 	figureName = "HEXAGON";
 }
 
@@ -19,10 +19,32 @@ void CHexagon::DrawMe(GUI* pGUI) const
 
 bool CHexagon::InPoint(int x, int y) //*****v2*******
 {
-	if (x >= TopLeftCorner.x - 0.5*length && x <= TopLeftCorner.x + 1.5*length && y >= TopLeftCorner.y && y < (TopLeftCorner.y + height))
+	// if inside inner rectangle
+	if (x >= TopLeftCorner.x && x <= TopLeftCorner.x + length && y >= TopLeftCorner.y && y <= TopLeftCorner.y + height)
 		return true;
-	else
-		return false;
+	///////////////////////
+	float sideTrianglesArea = AreaTriangle(TopLeftCorner.x, TopLeftCorner.y, TopLeftCorner.x, TopLeftCorner.y + height, TopLeftCorner.x - 0.5 * length, TopLeftCorner.y + 0.5 * height);
+	// if inside left side triangle
+	// left triangle >> (x,y), (x, y+h), (x-0.5l, y+0.5h)
+	float Area1 = AreaTriangle(x, y, TopLeftCorner.x, TopLeftCorner.y + height, TopLeftCorner.x - 0.5 * length, TopLeftCorner.y + 0.5 * height);
+	float Area2 = AreaTriangle(TopLeftCorner.x, TopLeftCorner.y, x, y, TopLeftCorner.x - 0.5 * length, TopLeftCorner.y + 0.5 * height);
+	float Area3 = AreaTriangle(TopLeftCorner.x, TopLeftCorner.y, TopLeftCorner.x, TopLeftCorner.y + height, x, y);
+	if (Area1 + Area2 + Area3 == sideTrianglesArea)
+		return true;
+	// if inside right side triangle
+	// right triangle >> (x+l,y), (x+l, y+h), (x+1.5l, y+0.5h)
+	Area1 = AreaTriangle(x, y, TopLeftCorner.x + length, TopLeftCorner.y + height, TopLeftCorner.x + 1.5 * length, TopLeftCorner.y + 0.5 * height);
+	Area2 = AreaTriangle(TopLeftCorner.x + length, TopLeftCorner.y, x, y, TopLeftCorner.x + 1.5 * length, TopLeftCorner.y + 0.5 * height);
+	Area3 = AreaTriangle(TopLeftCorner.x + length, TopLeftCorner.y, TopLeftCorner.x + length, TopLeftCorner.y + height, x, y);
+	if (Area1 + Area2 + Area3 == sideTrianglesArea)
+		return true;
+	
+	return false;
+}
+
+float CHexagon::AreaTriangle(float x1, float y1, float x2, float y2, float x3, float y3)
+{
+	return abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) * 0.5);
 }
 
 void CHexagon::PrintInfo(GUI* pGUI) //*****v2*******
@@ -34,11 +56,18 @@ void CHexagon::PrintInfo(GUI* pGUI) //*****v2*******
 	msg += to_string(TopLeftCorner.x + 0.5*length);
 	msg += " Y=";
 	msg += to_string(TopLeftCorner.y + 0.5*height);
-	msg += ", length=";
+	msg += ", top & bottom length=";
 	msg += to_string(length);
-	/*msg += ", area=";
-	msg += GetArea();*/
+	msg += ", height=";
+	msg += to_string(height);
+	msg += ", area=";
+	msg += to_string(GetArea());
 	pGUI->PrintMessage(msg);
+}
+
+int CHexagon::GetArea()
+{
+	return (length*height + height*0.5*length);
 }
 
 void CHexagon::Save(ofstream& OutFile)

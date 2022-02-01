@@ -19,6 +19,8 @@ public:
 	virtual void Load(ifstream& Infile);
 	CEllipse();
 	void Resize(GUI* pGUI, float size);
+
+	int GetArea();
 };
 
 #endif

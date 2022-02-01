@@ -1,10 +1,16 @@
 #include "CEllipse.h"
 #include <iostream>
 #include <string>
-CEllipse::CEllipse(Point P1, Point p2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
+CEllipse::CEllipse(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	firstPoint = P1;
-	secondPoint = p2;
+	if (P1.x != P2.x && P1.y != P2.y)
+		secondPoint = P2;
+	else
+	{
+		secondPoint.x = P2.x - 20;
+		secondPoint.y = P2.y - 20;
+	}
 	figureName = "ELLIPSE";
 }
 
@@ -16,9 +22,21 @@ void CEllipse::DrawMe(GUI* pGUI) const
 
 }
 
+// ***v5
 bool CEllipse::InPoint(int x, int y)//*****v2*******
 {
-	if (x >= firstPoint.x && x <= secondPoint.x && y >= firstPoint.y && y <= secondPoint.y)
+	// calculate radius in two directions
+	float RadiusX = abs(secondPoint.x - firstPoint.x) * 0.5;
+	float RadiusY = abs(secondPoint.y - firstPoint.y) * 0.5;
+	// center point of the ellipse
+	Point center;
+	center.x = firstPoint.x + RadiusX;
+	center.y = firstPoint.y + RadiusY;
+
+	// check if point inside ellipse
+	float checkIn = pow((x - center.x), 2) / pow(RadiusX, 2) 
+					+ pow((y - center.y), 2) / pow(RadiusY, 2);
+	if (checkIn <= 1)
 		return true;
 	else
 		return false;
@@ -34,12 +52,20 @@ void CEllipse::PrintInfo(GUI* pGUI)//*****v2*******
 	msg += to_string(firstPoint.x + (secondPoint.x - firstPoint.x) / 2);
 	msg += " Y=";
 	msg += to_string(firstPoint.y + (secondPoint.y - firstPoint.y) / 2);
-	msg += ", radius=";
+	msg += ", Xradius=";
 	msg += to_string((secondPoint.x - firstPoint.x) / 2);
-	/*msg += ", area=";
-	msg += GetArea();*/
+	msg += ", Yradius=";
+	msg += to_string((secondPoint.y - firstPoint.y) / 2);
+	msg += ", area=";
+	msg += to_string(GetArea());
 	pGUI->PrintMessage(msg);
 }
+
+int CEllipse::GetArea()
+{
+	return (M_PI * ((secondPoint.x - firstPoint.x) / 2) * ((secondPoint.y - firstPoint.y) / 2));
+}
+
 //******v3.1****** amany
 void CEllipse::Save(ofstream& OutFile)      //Write yourself on the file
 {

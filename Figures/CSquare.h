@@ -22,6 +22,7 @@ public:
 
 	void Resize(GUI* pGUI, float size);
 	
+	int GetArea();
 };
 
 #endif

@@ -51,6 +51,8 @@ public:
 
 	virtual void PrintInfo(GUI* pGUI) = 0;	//print all figure info on the status bar
 
+	virtual int GetArea() = 0;
+
 	//***v5 return the color of each figure in string
 	string GetFillClr();        
 
