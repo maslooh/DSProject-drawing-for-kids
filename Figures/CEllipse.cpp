@@ -1,6 +1,14 @@
 #include "CEllipse.h"
 #include <iostream>
 #include <string>
+
+CEllipse::CEllipse() 
+{
+	figureName = "ELLIPSE";
+	this->Selected = false;
+	this->isHidden = false;
+};
+
 CEllipse::CEllipse(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	firstPoint = P1;
@@ -11,9 +19,8 @@ CEllipse::CEllipse(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfx
 		secondPoint.x = P2.x - 20;
 		secondPoint.y = P2.y - 20;
 	}
-	figureName = "ELLIPSE";
+	
 }
-
 
 void CEllipse::DrawMe(GUI* pGUI) const
 {
@@ -22,8 +29,8 @@ void CEllipse::DrawMe(GUI* pGUI) const
 
 }
 
-// ***v5
-bool CEllipse::InPoint(int x, int y)//*****v2*******
+// 
+bool CEllipse::InPoint(int x, int y)
 {
 	// calculate radius in two directions
 	float RadiusX = abs(secondPoint.x - firstPoint.x) * 0.5;
@@ -43,7 +50,7 @@ bool CEllipse::InPoint(int x, int y)//*****v2*******
 
 }
 
-void CEllipse::PrintInfo(GUI* pGUI)//*****v2*******
+void CEllipse::PrintInfo(GUI* pGUI)
 {
 	// print figure information
 	string msg = "ID=";
@@ -66,7 +73,7 @@ int CEllipse::GetArea()
 	return (M_PI * ((secondPoint.x - firstPoint.x) / 2) * ((secondPoint.y - firstPoint.y) / 2));
 }
 
-//******v3.1****** amany
+//******v3.1****** 
 void CEllipse::Save(ofstream& OutFile)      //Write yourself on the file
 {
 	OutFile << "Ellipse\t" << ID << "\t" << this->firstPoint.x << "\t" << this->firstPoint.y << "\t"
@@ -78,7 +85,7 @@ void CEllipse::Save(ofstream& OutFile)      //Write yourself on the file
 		OutFile << "NON-FILLED\n";
 	//OutFile << this->FigGfxInfo.Resize_Factor << "\n";
 }
-/////////////alaa///
+
 void CEllipse::SetID(int ind)
 {
 	ID = ind;
@@ -103,11 +110,7 @@ void CEllipse::Load(ifstream& Infile)
 
 
 }
-CEllipse::CEllipse() 
-{
-	this->Selected = false;
-	this->isHidden = false;
-};
+
 void CEllipse::Resize(GUI* pGUI, float size)
 {
 	Point test1 = firstPoint, test2 = secondPoint;
@@ -128,17 +131,14 @@ void CEllipse::Resize(GUI* pGUI, float size)
 	test1.y -= deltaY * size;
 	test2.y += deltaY * size;
 
-	if (test1.y < UI.ToolBarHeight ||
-		test2.y>UI.height - UI.StatusBarHeight || test2.x > UI.width + UI.wx || test1.x < UI.wx || test2.y < 0 || test1.x < 0) //||test1.y<0||test2.x<0
+	if (test1.y < UI.ToolBarHeight || test2.y > UI.height - UI.StatusBarHeight 
+		|| test2.x > UI.width || test1.x < 1 )
 	{
-
 		pGUI->PrintMessage("Ellips size will be more than Dwawing Area");
-		Sleep(1000);
 	}
 	else if (((test2.x - test1.x) / 2) < 15 || ((test2.y - test1.y) / 2) < 10)
 	{
 		pGUI->PrintMessage("Ellips size will be very small");
-		Sleep(1000);
 	}
 	else
 	{

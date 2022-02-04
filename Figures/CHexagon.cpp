@@ -1,13 +1,18 @@
 #include "CHexagon.h"
 #include <iostream>
 #include <string>
-//fadwa ****v3****
+
+CHexagon::CHexagon() 
+{
+	this->Selected = false;
+	this->isHidden = false;
+	figureName = "HEXAGON";
+};
 CHexagon::CHexagon(Point P1, int len, int _height, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	TopLeftCorner = P1;
 	length = len<10 ? -10 : len;
 	height = _height<18 ? -18 : _height;
-	figureName = "HEXAGON";
 }
 
 
@@ -17,7 +22,7 @@ void CHexagon::DrawMe(GUI* pGUI) const
 	pGUI->DrawHexagon(TopLeftCorner, length, height, FigGfxInfo, Selected);
 }
 
-bool CHexagon::InPoint(int x, int y) //*****v2*******
+bool CHexagon::InPoint(int x, int y) 
 {
 	// if inside inner rectangle
 	if (x >= TopLeftCorner.x && x <= TopLeftCorner.x + length && y >= TopLeftCorner.y && y <= TopLeftCorner.y + height)
@@ -81,7 +86,7 @@ void CHexagon::Save(ofstream& OutFile)
 		OutFile << "NON-FILLED\n";
 	//OutFile << this->FigGfxInfo.Resize_Factor << "\n";	
 }
-//////////alaaa
+//////////
 void CHexagon::SetID(int ind)
 {
 	ID = ind;
@@ -106,28 +111,22 @@ void CHexagon::Load(ifstream& Infile)
 
 
 }
-CHexagon::CHexagon() 
-{
-	this->Selected = false;
-	this->isHidden = false;
-};
+
 void CHexagon::Resize(GUI* pGUI, float size)
 {
 
 	float length_test = length * size;
 	float height_test = height * size;
-	if((TopLeftCorner.y + height_test) > UI.height - UI.StatusBarHeight || (TopLeftCorner.x + length_test * 1.5) > UI.width + UI.wx || (TopLeftCorner.x + length_test * 0.5) < UI.wx)
+	if((TopLeftCorner.y + height_test) > UI.height - UI.StatusBarHeight 
+		|| (TopLeftCorner.x + length_test * 1.5) > UI.width 
+		|| (TopLeftCorner.x - length_test * 0.5) < 1)
 	{
-
 		pGUI->PrintMessage("Hexagon size will be more than Dwawing Area");
-		Sleep(1000);
 	}
 	else if (length_test < 20 || height_test < 20)
 	{
 		pGUI->PrintMessage("Hexagon size will be very small");
-		Sleep(1000);
 	}
-
 	else
 	{
 		length = length_test;

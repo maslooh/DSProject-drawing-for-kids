@@ -44,7 +44,6 @@ void ActionAddSquare::Execute()
 	}
 	else
 	{
-
 		//Step 2 - prepare square data
 		//User has entered two points P1&P2
 		//2.1- Identify the Top left corner of the square
@@ -56,10 +55,16 @@ void ActionAddSquare::Execute()
 		//The square side length would be the longer distance between the two points coordinates
 		int SideLength = max(abs(P1.x - P2.x), abs(P1.y - P2.y));
 
-
-		//Step 3 - Create a Square with the parameters read from the user
-		CSquare* R = new CSquare(topLeft, SideLength, SqrGfxInfo);
-		//Step 4 - Add the Square to the list of figures
-		pManager->AddFigure(R);
+		if (topLeft.x + SideLength > UI.width || topLeft.y + SideLength > UI.height - UI.StatusBarHeight )
+		{
+			pGUI->PrintMessage("Square will be outside the drawing area");
+		}
+		else {
+			//Step 3 - Create a Square with the parameters read from the user
+			CSquare* R = new CSquare(topLeft, SideLength, SqrGfxInfo);
+			//Step 4 - Add the Square to the list of figures
+			pManager->AddFigure(R);
+		}
+		
 	}
 }

@@ -1,3 +1,74 @@
 ﻿cl : command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  pickByBoth.cpp
+  CSquare.cpp
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CSquare.cpp(49,13): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CSquare.cpp(93,20): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CSquare.cpp(99,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CSquare.cpp(100,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CSquare.cpp(114,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  CHexagon.cpp
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(31,166): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(31,134): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(31,108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(31,88): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(31,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(31,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(34,126): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(34,94): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(34,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(34,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(34,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(34,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(35,117): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(35,85): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(35,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(35,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(35,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(35,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(36,109): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(36,106): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(36,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(36,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(36,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(36,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(41,129): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(41,97): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(41,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(41,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(41,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(41,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(42,120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(42,88): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(42,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(42,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(42,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(42,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(43,121): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(43,118): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(43,108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(43,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(43,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(43,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(52,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(75,24): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(132,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CHexagon.cpp(133,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  CEllipse.cpp
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(36,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(37,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(40,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(41,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(44,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(73,54): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(118,41): warning C4305: '=': truncation from 'double' to 'float'
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(124,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(125,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(129,20): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(130,20): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(131,20): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\projects\DS project\Project\DSProject-drawing-for-kids\Figures\CEllipse.cpp(132,20): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  ApplicationManager.cpp
+C:\projects\DS project\Project\DSProject-drawing-for-kids\ApplicationManager.cpp(260,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  ActionAddSquare.cpp
+  ActionAddHexagon.cpp
+  Generating Code...
   PT-Project.vcxproj -> C:\projects\DS project\Project\DSProject-drawing-for-kids\Debug\PT Project.exe

@@ -1,10 +1,15 @@
 #include "CSquare.h"
 
+CSquare::CSquare() 
+{
+	this->Selected = false;
+	this->isHidden = false;
+	figureName = "SQUARE";
+};
 CSquare::CSquare(Point P1, int len, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
 	TopLeftCorner = P1;
-	length = len;
-	figureName = "SQUARE";
+	length = len < 20 ? -20 : len;
 }
 	
 
@@ -12,8 +17,6 @@ void CSquare::DrawMe(GUI* pGUI) const
 {
 	//Call Output::DrawRect to draw a Square on the screen	
 	pGUI->DrawSquare(TopLeftCorner, length, FigGfxInfo, Selected);
-	
-
 }
 
 bool CSquare::InPoint(int x, int y)//*****v2*******
@@ -46,7 +49,7 @@ int CSquare::GetArea()
 	return (pow(length, 2));
 }
 
-//******v3.1***** amany
+
 void  CSquare::Save(ofstream& OutFile)
 {
 	OutFile << "Square\t"
@@ -59,7 +62,7 @@ void  CSquare::Save(ofstream& OutFile)
 		OutFile << "NON-FILLED\n";
 
 }
-/////////alaa//////////
+
 void CSquare::SetID(int ind)
 {
 	ID = ind;
@@ -84,15 +87,9 @@ void CSquare::Load(ifstream& Infile)
 
 
 }
-CSquare::CSquare() 
-{
-	this->Selected = false;
-	this->isHidden = false;
-};
+
 void CSquare::Resize(GUI* pGUI, float size)
 {
-
-
 	float length_test = length;
 	Point test1 = TopLeftCorner;
 	Point test2;
@@ -101,18 +98,15 @@ void CSquare::Resize(GUI* pGUI, float size)
 	length_test *= size;
 	test2.x = test1.x + length_test;
 	test2.y = test1.y + length_test;
-	if (test1.y < UI.ToolBarHeight ||
-		test2.y>UI.height - UI.StatusBarHeight || test2.x > UI.width + UI.wx || test1.x < UI.wx)
-	{
 
+	if (test1.y < UI.ToolBarHeight || test2.y > UI.height - UI.StatusBarHeight 
+		|| test2.x > UI.width || test1.x < 1)
+	{
 		pGUI->PrintMessage("Square size will be more than Dwawing Area");
-		Sleep(1000);
 	}
 	else if (length_test < 20)
-
 	{
 		pGUI->PrintMessage("Square size will be very small");
-		Sleep(1000);
 	}
 	else
 	{

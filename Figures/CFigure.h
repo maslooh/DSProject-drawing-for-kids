@@ -3,7 +3,7 @@
 
 #include "..\DEFS.h"
 #include "..\GUI\GUI.h"
-//***v3.1*** amany
+
 #include<fstream>
 #include<string>
 
@@ -11,7 +11,7 @@
 class CFigure
 {
 protected:
-	static int counter; //*****v2*******
+	static int counter; 
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info

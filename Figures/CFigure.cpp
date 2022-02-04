@@ -2,10 +2,10 @@
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
-	ID = ++CFigure::counter; //*****v2*******
+	ID = ++CFigure::counter; 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
-	isHidden = false;	///*****
+	isHidden = false;	
 }
 
 void CFigure::SetSelected(bool s)
@@ -27,7 +27,7 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
-//****v3.1**** amany
+
 string CFigure::colorToString(color c)
 {
 	if (c == BLACK) return "BLACK";
@@ -41,7 +41,7 @@ string CFigure::colorToString(color c)
 	else if (c == TURQUOISE) return "TURQUOISE";
 	return "COLOR";
 }
-////////////alaaaaa
+
 color CFigure::GetStrinColor(string s) const
 {
 	if (s == "BLACK")
@@ -66,7 +66,7 @@ color CFigure::GetStrinColor(string s) const
 }
 CFigure::CFigure() {};
 
-//***v5 fadwa
+
 string CFigure::GetFillClr()
 {
 	if (FigGfxInfo.isFilled)
@@ -75,7 +75,7 @@ string CFigure::GetFillClr()
 		return "NON-FILLED";
 }
 
-///****reem v4***********
+
 bool CFigure::isShapeHiddin() {
 	return isHidden;
 }

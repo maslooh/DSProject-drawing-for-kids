@@ -38,30 +38,35 @@ void ActionAddHexagon::Execute()
 	pGUI->ClearStatusBar();
 
 
-	//Step 2 - prepare hexagon data
-	//User has entered two points P1&P2
-	//2.1- Identify the Top left corner of the square
-	Point topLeft;
-	topLeft.x = P1.x < P2.x ? P1.x : P2.x;
-	topLeft.y = P1.y < P2.y ? P1.y : P2.y;
-
 	if (P1.y < UI.ToolBarHeight || P2.y < UI.ToolBarHeight
-		|| P1.y>UI.height - UI.StatusBarHeight || P2.y>UI.height - UI.StatusBarHeight)
+		|| P1.y > UI.height - UI.StatusBarHeight || P2.y > UI.height - UI.StatusBarHeight)
 	{
 		pGUI->PrintMessage("draw inside drawing area");
 	}
 	else
 	{
+		//Step 2 - prepare hexagon data
+		//User has entered two points P1&P2
+		//2.1- Identify the Top left corner of the square
+		Point topLeft;
+		topLeft.x = P1.x < P2.x ? P1.x : P2.x;
+		topLeft.y = P1.y < P2.y ? P1.y : P2.y;
+
 		//2.2- Calcuate hexagon side legnth
 		//The square side length would be the longer distance between the two points coordinates
 		int topLength = abs(P1.x - P2.x);
 		int height = abs(P1.y - P2.y);
 
-
-		//Step 3 - Create a hexagon with the parameters read from the user
-		CHexagon* R = new CHexagon(topLeft, topLength, height, hexaGfxInfo);
-		//Step 4 - Add the hexagon to the list of figures
-		pManager->AddFigure(R);
+		if ((topLeft.x + topLength * 1.5) > UI.width || (topLeft.x - topLength * 0.5) < 1)
+		{
+			pGUI->PrintMessage("Hexagon will be outside the drawing area");
+		}
+		else {
+			//Step 3 - Create a hexagon with the parameters read from the user
+			CHexagon* H = new CHexagon(topLeft, topLength, height, hexaGfxInfo);
+			//Step 4 - Add the hexagon to the list of figures
+			pManager->AddFigure(H);
+		}
 	}
 }
 

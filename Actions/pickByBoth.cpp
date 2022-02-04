@@ -3,7 +3,6 @@
 #include"../Figures/CFigure.h"
 #include"../GUI/GUI.h"
 #include <iostream>
-//***********************v5***************************** maslooh
 PickByBoth::PickByBoth(ApplicationManager* pApp) :Action(pApp) 
 {
 	correctAns = 0;
