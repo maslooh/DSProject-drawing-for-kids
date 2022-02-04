@@ -10,6 +10,7 @@ CHexagon::CHexagon()
 };
 CHexagon::CHexagon(Point P1, int len, int _height, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
+	figureName = "HEXAGON";
 	TopLeftCorner = P1;
 	length = len<10 ? -10 : len;
 	height = _height<18 ? -18 : _height;

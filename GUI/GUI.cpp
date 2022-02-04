@@ -5,17 +5,13 @@ GUI::GUI()
 {
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
-	
 	UI.width = 1300;
 	UI.height = 700;
 	UI.wx = 5;
 	UI.wy =5;
-
-	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 80;
-	
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
 	UI.MsgColor = RED;		//Messages color

@@ -21,13 +21,15 @@ void PickByBoth::Execute()
 		string msg = "please select all "+ randomFigClr +" " + randomFigName + "S";
 		pGui->PrintMessage(msg);
 		int matchingFigCount = getMatchingFigCount(randomFig);
-		//
-		while (matchingFigCount)
+		int flag = 1;
+		while (matchingFigCount && flag)
 		{
 			//get a mouse click
 			Point clickedPoint;
 			pGui->pWind->WaitMouseClick(clickedPoint.x,clickedPoint.y);
-
+			//checking if the user clicked on tool bar
+			if (clickedPoint.y < UI.ToolBarHeight && clickedPoint.x < UI.MenuItemWidth * 4)
+				flag = 0;
 			//select a figure on screen
 			CFigure* selectedFig = pManager->GetFigure(clickedPoint.x, clickedPoint.y);
 
@@ -60,12 +62,23 @@ void PickByBoth::Execute()
 				pGui->PrintMessage("Please select a figure");
 			}
 		}
+		//case of exiting game
+		if (!flag) 
+		{
+			string finalMsg = "exited game!";
+			pGui->PrintMessage(finalMsg);
+			Sleep(500);
+			pManager->displayAllFigures();
+		}
 		//case of selecting all matching figures
-		string finalMsg = "Finished ,your score is >> correct answers:" +
-			               to_string(correctAns) + " ,wrong answers: " + to_string(wrongAns);
-		pGui->PrintMessage(finalMsg);
-		Sleep(500);	
-		pManager->displayAllFigures();
+		else 
+		{
+			string finalMsg = "Finished ,your score is >> correct answers:" +
+				to_string(correctAns) + " ,wrong answers: " + to_string(wrongAns);
+			pGui->PrintMessage(finalMsg);
+			Sleep(500);
+			pManager->displayAllFigures();
+		}
 	}
 	//case of empty figure list
 	else

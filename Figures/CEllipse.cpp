@@ -11,6 +11,7 @@ CEllipse::CEllipse()
 
 CEllipse::CEllipse(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
+	figureName = "ELLIPSE";
 	firstPoint = P1;
 	if (P1.x != P2.x && P1.y != P2.y)
 		secondPoint = P2;
