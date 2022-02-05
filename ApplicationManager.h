@@ -17,6 +17,7 @@ private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
+	int flag;
 	//Pointers to Input and Output classes
 	GUI* pGUI;
 	
