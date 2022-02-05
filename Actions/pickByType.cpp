@@ -42,6 +42,8 @@ void pickByType::Execute() {
 		Fig = pManager->getFigList(randomShape);*/
 		CFigure* Fig = pManager->getRandomFigure();//getting a random figure from figure list
 
+
+
 		//Fig = pManager->getFigList(randomShape);
 		if (Fig->getFigureName() == "SQUARE") {
 			no_shapesEachCategory = shapes[0];
