@@ -1,28 +1,26 @@
 #include "ApplicationManager.h"
 #include "Actions\ActionAddSquare.h"
-#include"Actions\ActionAddEllipse.h" 
-#include"Actions\ActionAddHexagon.h" 
-#include "Actions\ActionSelect.h" 
-#include "Actions/ActionChngDrawClr.h" 
-#include "Actions/ActionChngFillClr.h" 
+#include"Actions\ActionAddEllipse.h" //v1
+#include"Actions\ActionAddHexagon.h" //v1
+#include "Actions\ActionSelect.h" //v2
+#include "Actions/ActionChngDrawClr.h" //v2
+#include "Actions/ActionChngFillClr.h" //v2
 #include "Actions/ActionChngBkGrndClr.h"
-#include "Actions/ActionDelete.h" 
-#include "Actions/ActionSendBack.h" 
-#include "Actions/ActionBringFront.h" 
+#include "Actions/ActionDelete.h" //v3
+#include "Actions/ActionSendBack.h" //****v3****
+#include "Actions/ActionBringFront.h" //****v3****
 #include "Actions/ToPlayAction.h"
-#include"Actions/Save.h"
-#include"Actions/Exit.h"
-#include"Actions/Load.h"
-#include"Actions/Resize.h"
-#include"Actions/PickByColor.h"
-#include "Actions/pickByType.h"
-#include "Actions/backToDrawMode.h" 
-#include"Actions/pickByBoth.h"
+#include"Actions/Save.h"//v3.1
+#include"Actions/Exit.h"//v3.1
+#include"Actions/Load.h"//v4
+#include"Actions/Resize.h"//v4
+#include"Actions/PickByColor.h"//***v5
+#include "Actions/pickByType.h"//v4 reem
+#include "Actions/backToDrawMode.h" //v4reem
+#include"Actions/pickByBoth.h"//****v5*** maslooh
 #include <string>
 #include <string.h>
 #include <iostream>
-
-
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -31,7 +29,7 @@ ApplicationManager::ApplicationManager()
 	pGUI = new GUI;	
 	
 	FigCount = 0;
-
+	flag = 0;
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
 		FigList[i] = NULL;	
@@ -70,79 +68,100 @@ Action* ApplicationManager::CreateAction(ActionType ActType)
 	{
 		case DRAW_SQUARE:
 			newAct = new ActionAddSquare(this);
+			
 			break;
 
-		case DRAW_ELPS: 
+		case DRAW_ELPS: //v1
 			newAct = new ActionAddEllipse(this);
-
+			
 			break;
-		case DRAW_HEX: 
+		case DRAW_HEX: //v1
 			newAct = new ActionAddHexagon(this);
+			
 			break;
-		case DRAWING_AREA: 
+		case DRAWING_AREA: //v2
 			newAct = new ActionSelect(this);
+			
 			break;
 			
 			//Color Change Actions//
 		//Color Change Actions//
-		case CHNG_DRAW_CLR:		
+		case CHNG_DRAW_CLR:		//v4 eslam
 			newAct = new ActionChngDrawClr(this);
+			
 			break;
 
-		case CHNG_FILL_CLR:		
+		case CHNG_FILL_CLR:		//v4 eslam
 			newAct = new ActionChngFillClr(this);
+			flag = 1;
 			break;
 
-		case CHNG_BK_CLR:		
+		case CHNG_BK_CLR:		//v4 eslam
 			newAct = new ActionChngBkGrndClr(this);
+			
 			break;
 
 		case DEL:
-			newAct = new ActionDelete(this); 
+			newAct = new ActionDelete(this); //***v3***
+			
 			break;
 
 		case SEND_BACK:
-			newAct = new ActionSendBack(this); 
+			newAct = new ActionSendBack(this); //fadwa ****v3****
+			
 			break;
 		case BRNG_FRNT:
-			newAct = new ActionBringFront(this);
+			newAct = new ActionBringFront(this); //fadwa ****v3****
+			
 			break;
 		case TO_PLAY:
 			newAct = new ToPlayAction(this);
+			flag = 0;
 			break;
 		case P_BY_TYPE:
 			newAct = new pickByType(this);
+			flag = 0;
 			break;
-		case P_BY_COLOR:   
+		case P_BY_COLOR:   //***v5 
 			newAct = new PickByColor(this);
+			flag = 0;
 			break;
-		case P_BY_BOTH:   
+		case P_BY_BOTH:   //***v5*** maslooh
 			newAct = new PickByBoth(this);
+			flag = 0;
 			break;
 		case TO_DRAW:
 			newAct = new backToDrawMode(this);
+			flag = 0;
 			break;
-		case SAVE:   
+		case SAVE:    //****v3.1****
 			newAct = new Save(this, FigCount);
+			flag = 0;
 			break;
 		case LOAD:
-			newAct = new  Load(this);
+			newAct = new Load(this);
+			flag = 0;
 			break;
-		case RESIZE:  
+		case RESIZE:  ///alaa
 			newAct = new Resize(this);
+		
 			break;
 
-		
-
-		case EXIT:  
+		case EXIT:  //****v3.1*****
 			///create ExitAction here
-			newAct = new Exit(this);
+			newAct = new Exit(this, FigCount, flag);
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
 			return NULL;
 			break;
-	}	
+	}
+	if (ActType==12|| ActType == 13 || ActType == 14 || ActType == 16 || ActType == 18 || ActType == 19 || ActType == 26 || ActType == 27 || ActType == 28) {
+		flag = 0;	
+	}
+	else {
+		flag = 1;
+	}
 	return newAct;
 }
 //////////////////////////////////////////////////////////////////////
@@ -181,14 +200,7 @@ bool ApplicationManager::GetColor(color& inputColor) //v2
 	ActionType inputColorAction = pGUI->MapInputToActionType();
 
 	switch (inputColorAction) {
-	case SET_BLACK:
-		inputColor = BLACK;
-		break;
-
-	case SET_WHITE:
-		inputColor = WHITE;
-		break;
-
+	
 	case SET_RED:
 		inputColor = RED;
 		break;
@@ -199,6 +211,18 @@ bool ApplicationManager::GetColor(color& inputColor) //v2
 		
 	case SET_BLUE:
 		inputColor = BLUE;
+		break;
+
+	case SET_PINK:
+		inputColor = PINK;
+		break;
+
+	case SET_MAROON:
+		inputColor = MAROON;
+		break;
+
+	case SET_PURPLE:
+		inputColor = PURPLE;
 		break;
 
 	default:
@@ -212,13 +236,13 @@ bool ApplicationManager::GetColor(color& inputColor) //v2
 }
 ////////////////////////////////////////////////////////////////////////////////////
 
-CFigure* ApplicationManager::GetFigure(int x, int y) const
+CFigure* ApplicationManager::GetFigure(int x, int y) const////*****v2*****
 {
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
 	for (int i = FigCount - 1; i >= 0; i--)
 	{
-		if (FigList[i]->InPoint(x, y) && !FigList[i]->isShapeHiddin())
+		if (FigList[i]->InPoint(x, y) && !FigList[i]->isShapeHiddin())//********v3*********//***v5
 		{
 			return FigList[i];
 		}
@@ -227,7 +251,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 }
 
 //////////////////////////////////////
-
+//********v4 reem*********
 int ApplicationManager::getFigCount()const {
 	return FigCount;
 }
@@ -236,14 +260,15 @@ CFigure* ApplicationManager::getFigList(int i) const
 {
 	return FigList[i];
 }
-/**unhides all figuers after finishing a game in play mode*/
+/**unhides all figuers after finishing a game in play mode*/ //***v5*** maslooh
 void ApplicationManager::displayAllFigures()
 {
 	for (int i = 0; i < FigCount; i++) {
 		FigList[i]->displayShape();
 	}
 }
- 
+
+//***v5 
 bool ApplicationManager::hasDifferentColors() {
 	for (int i = 0; i < FigCount-1; i++) {
 		if (FigList[i]->GetFillClr() != FigList[i + 1]->GetFillClr())
@@ -251,7 +276,7 @@ bool ApplicationManager::hasDifferentColors() {
 	}
 	return false;
 }
-
+//***v5*** maslooh
 /**this function returns a random figure from the figure list */
 CFigure* ApplicationManager::getRandomFigure()
 {
@@ -263,7 +288,7 @@ CFigure* ApplicationManager::getRandomFigure()
 	return nullptr;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
-
+//**********v3.1***********updated maslooh
 void ApplicationManager::DeleteFigure()
 {
 	int flag = 1;
@@ -286,6 +311,7 @@ void ApplicationManager::DeleteFigure()
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
+//fadwa ****v3****
 void ApplicationManager::SendFigureBack()
 {
 	int flag = 0;
@@ -309,6 +335,7 @@ void ApplicationManager::SendFigureBack()
 		pGUI->PrintMessage("please select a figure first");
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
+//fadwa ****v3****
 void ApplicationManager::BringFigureFront()
 {
 	int flag = 0;
@@ -336,6 +363,8 @@ void ApplicationManager::BringFigureFront()
 		pGUI->PrintMessage("please select a figure first");
 }
 
+
+//**********v3**************
 void ApplicationManager::changeFillColor(color FillClr)
 {
 	for (int i = 0; i < FigCount; i++)
@@ -346,7 +375,7 @@ void ApplicationManager::changeFillColor(color FillClr)
 		}
 	}
 }
-
+//**********v3**************
 void ApplicationManager::changeDrawColor(color drawClr)
 {
 	for (int i = 0; i < FigCount; i++)
@@ -358,7 +387,7 @@ void ApplicationManager::changeDrawColor(color drawClr)
 	}
 }
 
-
+//**********v3.1************** maslooh
 void ApplicationManager::unselectAll()
 {
 	for (int i = 0; i < FigCount; i++)
@@ -367,25 +396,27 @@ void ApplicationManager::unselectAll()
 	}
 }
 
-
+//**********v3.1**************
 void ApplicationManager::SaveFig(ofstream& Out)   //Call the Save function for each Figure
 {
 
 	for (int i = 0; i < FigCount; ++i)
 			FigList[i]->Save(Out);
 }
-
+//**********v3.1**************
 string ApplicationManager::ConvertToString(color c)   //Convert from Color Type to String Type
 {
-	if (c == BLACK) return "BLACK";
-	else if (c == WHITE) return "WHITE";
-	else if (c == BLUE) return "BLUE";
+	if (c == BLUE) return "BLUE";
 	else if (c == RED) return "RED";
 	else if (c == YELLOW) return "YELLOW";
 	else if (c == GREEN) return "GREEN";
 	else if (c == LIGHTGOLDENRODYELLOW) return "LIGHTGOLDENRODYELLOW";
 	else if (c == MAGENTA) return "MAGENTA";
 	else if (c == TURQUOISE) return "TURQUOISE";
+	else if (c == PINK) return "PINK";
+	else if (c == MAROON) return "MAROON";
+	else if (c == PURPLE) return "PURPLE";
+
 	return "COLOR";
 }
 //==================================================================================//
@@ -417,15 +448,11 @@ ApplicationManager::~ApplicationManager()
 	delete pGUI;
 	
 }
-
+/////////alaa////////
 color ApplicationManager::ConvertToColor(string s)
 {
-	if (s == "BLACK")
-		return BLACK;
 	if (s == "BLUE")
 		return BLUE;
-	if (s == "WHITE")
-		return WHITE;
 	if (s == "RED")
 		return RED;
 	if (s == "YELLOW")
@@ -438,6 +465,12 @@ color ApplicationManager::ConvertToColor(string s)
 		return MAGENTA;
 	if (s == "TURQUOISE")
 		return TURQUOISE;
+	if (s == "PINK")
+		return PINK;
+	if (s == "MAROON")
+		return MAROON;
+	if (s == "PURPLE")
+		return PURPLE;
 	return BLACK;
 }
 
