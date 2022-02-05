@@ -11,6 +11,7 @@ pickByType::pickByType(ApplicationManager* pApp) :Action(pApp) {
 	wrongAns = 0;
 }
 void pickByType::Execute() {
+	srand(time(0));
 
 	for (int i = 0; i < pManager->getFigCount(); i++) {
 
@@ -91,6 +92,7 @@ void pickByType::Execute() {
 			}
 			if (no_shapesEachCategory==0) {
 				score(3);
+				Sleep(1000);
 			}
 		}//end of while
 	}// end of if (no_shapes>1)

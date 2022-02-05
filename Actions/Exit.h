@@ -1,15 +1,13 @@
 #pragma once
 #include"Action.h"
-class Exit : public Action
+class Exit:public Action
 {
-	
+	int FigCnt;
+	int f;
 public:
-	Exit(ApplicationManager* pApp);
+	Exit(ApplicationManager* pApp, int FigCount, int flag);
 
-	//Reads ellipse parameters
-	virtual void ReadActionParameters();
 
-	//Add ellipse to the ApplicationManager
 	virtual void Execute();
 	
 };

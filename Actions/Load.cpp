@@ -27,22 +27,48 @@
 
 Load::Load(ApplicationManager* pApp) :Action(pApp)
 {}
-void Load::ReadActionParameters()
-{
-	GUI* pGUI = pManager->GetGUI();
-  // pGUI->PrintMessage("Please write the file name :) ");
- 	//FileName = pGUI->GetSrting();     //get the file name
-}
+
 
 //Execute the action
 void Load::Execute()
 {
+
 	GUI* pGUI = pManager->GetGUI();
+	int figcount = pManager->getFigCount();
+	if (figcount > 0)
+	{
+		int msgboxID = MessageBoxW(
+			NULL,
+			(LPCWSTR)L"save before load!\n",
+			(LPCWSTR)L"file not saved ",
+			MB_ICONWARNING | MB_YESNO
+		);
+
+		switch (msgboxID)
+		{
+		case IDYES:
+		{	Action* pAct = pManager->CreateAction(SAVE);
+		pManager->ExecuteAction(pAct);
+		pGUI->PrintMessage("file save load now ");
+		break;
+		}
+		case IDNO:
+		{pGUI->PrintMessage("file not save load now ");
+		break;
+		}
+		}
+		int msgboxID2 = MessageBoxW(
+			NULL,
+			(LPCWSTR)L"      load now!            \n",
+			(LPCWSTR)L"       loading file            ",
+			MB_ICONINFORMATION | MB_OK
+		);
+	}
 	string bkgclr, DrawClr, FillClr, name;
 	int Cnt;
 	CFigure* fig = NULL;
 
-	ReadActionParameters();   //read the inputs
+	
 	//std::string filename = "load.txt"; // could come from command line.
 	//ifstream InFile;         //object of ifstream class
 	//InFile.open(filename);
@@ -140,5 +166,9 @@ void Load::Execute()
 
 }
 	
+
+		
+
+
 	
 

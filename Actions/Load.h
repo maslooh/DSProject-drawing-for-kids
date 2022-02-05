@@ -10,7 +10,7 @@ private:
 	string FileName;
 public:
 	Load(ApplicationManager* pApp);
-	virtual void ReadActionParameters();
+	
 
 	virtual void Execute();
 

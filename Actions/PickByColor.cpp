@@ -86,7 +86,7 @@ void PickByColor::Execute()
 		{
 			// after user selected all correct figures
 			score(3, "");
-			Sleep(1500);
+			Sleep(1000);
 			//pGUI->PrintMessage("Welcome to play mode");
 		}
 
