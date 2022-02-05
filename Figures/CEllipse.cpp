@@ -136,10 +136,13 @@ void CEllipse::Resize(GUI* pGUI, float size)
 		|| test2.x > UI.width || test1.x < 1 )
 	{
 		pGUI->PrintMessage("Ellips size will be more than Dwawing Area");
+		Sleep(1000);
 	}
+	
 	else if (((test2.x - test1.x) / 2) < 15 || ((test2.y - test1.y) / 2) < 10)
 	{
 		pGUI->PrintMessage("Ellips size will be very small");
+		Sleep(1000);
 	}
 	else
 	{

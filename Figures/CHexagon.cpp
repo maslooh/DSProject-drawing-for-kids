@@ -123,10 +123,12 @@ void CHexagon::Resize(GUI* pGUI, float size)
 		|| (TopLeftCorner.x - length_test * 0.5) < 1)
 	{
 		pGUI->PrintMessage("Hexagon size will be more than Dwawing Area");
+		Sleep(1000);
 	}
 	else if (length_test < 20 || height_test < 20)
 	{
 		pGUI->PrintMessage("Hexagon size will be very small");
+		Sleep(1000);
 	}
 	else
 	{

@@ -107,10 +107,12 @@ void CSquare::Resize(GUI* pGUI, float size)
 		|| test2.x > UI.width || test1.x < 1)
 	{
 		pGUI->PrintMessage("Square size will be more than Dwawing Area");
+		Sleep(1000);
 	}
 	else if (length_test < 20)
 	{
 		pGUI->PrintMessage("Square size will be very small");
+		Sleep(1000);
 	}
 	else
 	{
