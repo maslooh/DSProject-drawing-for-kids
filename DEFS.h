@@ -31,11 +31,13 @@ enum ActionType //The actions supported (you can add more if needed)
 
 	///TODO: Add more action types (if needed)
 	//*****v2*******
-	SET_BLACK,		//pick black color
-	SET_WHITE,		//pick white color
 	SET_RED,		//pick red color
 	SET_GREEN,		//pick green color
 	SET_BLUE,		//pick blue color
+	SET_PINK,		//pick pink color
+	SET_MAROON,		//pick maroon color
+	SET_PURPLE,		//pick purple color
+
 
 	//REEM ****V3****
 	P_BY_TYPE,		//Pick and hide, by type
