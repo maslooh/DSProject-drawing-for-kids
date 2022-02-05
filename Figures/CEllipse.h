@@ -1,4 +1,3 @@
-#pragma once
 #ifndef CELLIPSE_H
 #define CELLIPSE_H
 #include "CFigure.h"

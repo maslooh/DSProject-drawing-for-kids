@@ -2,10 +2,10 @@
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
-	ID = ++CFigure::counter; 
+	ID = ++CFigure::counter; //*****v2*******
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
-	isHidden = false;	
+	isHidden = false;	///*****
 }
 
 void CFigure::SetSelected(bool s)
@@ -27,29 +27,26 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
-
+//****v3.1**** amany
 string CFigure::colorToString(color c)
 {
-	if (c == BLACK) return "BLACK";
-	else if (c == WHITE) return "WHITE";
-	else if (c == BLUE) return "BLUE";
+	if (c == BLUE) return "BLUE";
 	else if (c == RED) return "RED";
 	else if (c == YELLOW) return "YELLOW";
 	else if (c == GREEN) return "GREEN";
 	else if (c == LIGHTGOLDENRODYELLOW) return "LIGHTGOLDENRODYELLOW";
 	else if (c == MAGENTA) return "MAGENTA";
 	else if (c == TURQUOISE) return "TURQUOISE";
+	else if (c == PINK) return "PINK";
+	else if (c == MAROON) return "MAROON";
+	else if (c == PURPLE) return "PURPLE";
 	return "COLOR";
 }
-
+////////////alaaaaa
 color CFigure::GetStrinColor(string s) const
 {
-	if (s == "BLACK")
-		return BLACK;
 	if (s == "BLUE")
 		return BLUE;
-	if (s == "WHITE")
-		return WHITE;
 	if (s == "RED")
 		return RED;
 	if (s == "YELLOW")
@@ -62,11 +59,17 @@ color CFigure::GetStrinColor(string s) const
 		return MAGENTA;
 	if (s == "TURQUOISE")
 		return TURQUOISE;
+	if (s == "PINK")
+		return PINK;
+	if (s == "MAROON")
+		return MAROON;
+	if (s == "PURPLE")
+		return PURPLE;
 	return BLACK;
 }
 CFigure::CFigure() {};
 
-
+//***v5 fadwa
 string CFigure::GetFillClr()
 {
 	if (FigGfxInfo.isFilled)
@@ -75,7 +78,7 @@ string CFigure::GetFillClr()
 		return "NON-FILLED";
 }
 
-
+///****reem v4***********
 bool CFigure::isShapeHiddin() {
 	return isHidden;
 }

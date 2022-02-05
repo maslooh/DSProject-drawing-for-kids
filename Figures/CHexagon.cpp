@@ -2,20 +2,20 @@
 #include <iostream>
 #include <string>
 
-CHexagon::CHexagon() 
+CHexagon::CHexagon()
 {
 	this->Selected = false;
 	this->isHidden = false;
 	figureName = "HEXAGON";
 };
+//fadwa ****v3****
 CHexagon::CHexagon(Point P1, int len, int _height, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
-	figureName = "HEXAGON";
 	TopLeftCorner = P1;
 	length = len<10 ? -10 : len;
 	height = _height<18 ? -18 : _height;
+	figureName = "HEXAGON";
 }
-
 
 void CHexagon::DrawMe(GUI* pGUI) const
 {
@@ -23,7 +23,7 @@ void CHexagon::DrawMe(GUI* pGUI) const
 	pGUI->DrawHexagon(TopLeftCorner, length, height, FigGfxInfo, Selected);
 }
 
-bool CHexagon::InPoint(int x, int y) 
+bool CHexagon::InPoint(int x, int y) //*****v2*******
 {
 	// if inside inner rectangle
 	if (x >= TopLeftCorner.x && x <= TopLeftCorner.x + length && y >= TopLeftCorner.y && y <= TopLeftCorner.y + height)
@@ -87,7 +87,7 @@ void CHexagon::Save(ofstream& OutFile)
 		OutFile << "NON-FILLED\n";
 	//OutFile << this->FigGfxInfo.Resize_Factor << "\n";	
 }
-//////////
+//////////alaaa
 void CHexagon::SetID(int ind)
 {
 	ID = ind;

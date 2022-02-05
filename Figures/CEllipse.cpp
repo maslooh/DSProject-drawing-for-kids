@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-CEllipse::CEllipse() 
+CEllipse::CEllipse()
 {
 	figureName = "ELLIPSE";
 	this->Selected = false;
@@ -11,7 +11,6 @@ CEllipse::CEllipse()
 
 CEllipse::CEllipse(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
-	figureName = "ELLIPSE";
 	firstPoint = P1;
 	if (P1.x != P2.x && P1.y != P2.y)
 		secondPoint = P2;
@@ -20,8 +19,9 @@ CEllipse::CEllipse(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfx
 		secondPoint.x = P2.x - 20;
 		secondPoint.y = P2.y - 20;
 	}
-	
+	figureName = "ELLIPSE";
 }
+
 
 void CEllipse::DrawMe(GUI* pGUI) const
 {
@@ -30,8 +30,8 @@ void CEllipse::DrawMe(GUI* pGUI) const
 
 }
 
-// 
-bool CEllipse::InPoint(int x, int y)
+// ***v5
+bool CEllipse::InPoint(int x, int y)//*****v2*******
 {
 	// calculate radius in two directions
 	float RadiusX = abs(secondPoint.x - firstPoint.x) * 0.5;
@@ -51,7 +51,7 @@ bool CEllipse::InPoint(int x, int y)
 
 }
 
-void CEllipse::PrintInfo(GUI* pGUI)
+void CEllipse::PrintInfo(GUI* pGUI)//*****v2*******
 {
 	// print figure information
 	string msg = "ID=";
@@ -74,7 +74,7 @@ int CEllipse::GetArea()
 	return (M_PI * ((secondPoint.x - firstPoint.x) / 2) * ((secondPoint.y - firstPoint.y) / 2));
 }
 
-//******v3.1****** 
+//******v3.1****** amany
 void CEllipse::Save(ofstream& OutFile)      //Write yourself on the file
 {
 	OutFile << "Ellipse\t" << ID << "\t" << this->firstPoint.x << "\t" << this->firstPoint.y << "\t"
@@ -86,7 +86,7 @@ void CEllipse::Save(ofstream& OutFile)      //Write yourself on the file
 		OutFile << "NON-FILLED\n";
 	//OutFile << this->FigGfxInfo.Resize_Factor << "\n";
 }
-
+/////////////alaa///
 void CEllipse::SetID(int ind)
 {
 	ID = ind;

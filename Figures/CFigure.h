@@ -3,7 +3,7 @@
 
 #include "..\DEFS.h"
 #include "..\GUI\GUI.h"
-
+//***v3.1*** amany
 #include<fstream>
 #include<string>
 
@@ -11,7 +11,7 @@
 class CFigure
 {
 protected:
-	static int counter; 
+	static int counter; //*****v2*******
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
@@ -50,8 +50,6 @@ public:
 	CFigure();
 
 	virtual void PrintInfo(GUI* pGUI) = 0;	//print all figure info on the status bar
-
-	virtual int GetArea() = 0;
 
 	//***v5 return the color of each figure in string
 	string GetFillClr();        

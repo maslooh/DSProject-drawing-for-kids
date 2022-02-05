@@ -1,16 +1,19 @@
 #include "CSquare.h"
+#include <iostream>
+#include <string>
 
-CSquare::CSquare() 
+CSquare::CSquare()
 {
 	this->Selected = false;
 	this->isHidden = false;
 	figureName = "SQUARE";
 };
+
 CSquare::CSquare(Point P1, int len, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
-	figureName = "SQUARE";
 	TopLeftCorner = P1;
 	length = len < 20 ? -20 : len;
+	figureName = "SQUARE";
 }
 	
 
@@ -50,7 +53,7 @@ int CSquare::GetArea()
 	return (pow(length, 2));
 }
 
-
+//******v3.1***** amany
 void  CSquare::Save(ofstream& OutFile)
 {
 	OutFile << "Square\t"
@@ -63,7 +66,7 @@ void  CSquare::Save(ofstream& OutFile)
 		OutFile << "NON-FILLED\n";
 
 }
-
+/////////alaa//////////
 void CSquare::SetID(int ind)
 {
 	ID = ind;
