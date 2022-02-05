@@ -106,7 +106,7 @@ void CSquare::Resize(GUI* pGUI, float size)
 	if (test1.y < UI.ToolBarHeight || test2.y > UI.height - UI.StatusBarHeight 
 		|| test2.x > UI.width || test1.x < 1)
 	{
-		pGUI->PrintMessage("Square size will be more than Dwawing Area");
+		pGUI->PrintMessage("Square size will be more than Drawing Area");
 		Sleep(1000);
 	}
 	else if (length_test < 20)
