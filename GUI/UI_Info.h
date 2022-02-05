@@ -61,11 +61,12 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 //v2***********************************************
 enum ColorMenuItem //The items of the Color menu (you should add more items)
 {
-	ITM_BLACK,		//Black color item in menu
-	ITM_WHITE,		//White color item in menu	
 	ITM_RED,		//Red color item in menu
 	ITM_GREEN,		//Green color item in menu
 	ITM_BLUE,		//Blue color item in menu
+	ITM_PINK,		//Pink color item in menu
+	ITM_MAROON,		//Maroon color item in menu
+	ITM_PURPLE,		//Purple color item in menu
 
 	COLOR_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 

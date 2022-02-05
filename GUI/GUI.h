@@ -31,6 +31,7 @@ public:
 	void CreateDrawToolBar() const;	//creates Draw mode toolbar & menu
 	void CreatePlayToolBar() const;	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
+	void CreateToolBar() const;		//create the tool bar
 
 	void CreateColorToolBar() const;//v2  creates Color picker toolbar & menu
 

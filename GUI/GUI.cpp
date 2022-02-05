@@ -5,13 +5,17 @@ GUI::GUI()
 {
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
+	
 	UI.width = 1300;
 	UI.height = 700;
 	UI.wx = 5;
 	UI.wy =5;
+
+	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 80;
+	
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
 	UI.MsgColor = RED;		//Messages color
@@ -125,11 +129,12 @@ ActionType GUI::MapInputToActionType()
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_BLACK: return SET_BLACK;
-			case ITM_WHITE: return SET_WHITE;
 			case ITM_RED: return SET_RED;
 			case ITM_GREEN: return SET_GREEN;
 			case ITM_BLUE: return SET_BLUE;
+			case ITM_PINK: return SET_PINK;
+			case ITM_MAROON: return SET_MAROON;
+			case ITM_PURPLE: return SET_PURPLE;
 
 			default: return EMPTY;
 			}
@@ -228,8 +233,16 @@ void GUI::ClearStatusBar() const
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+void GUI::CreateToolBar() const
+{
+	pWind->SetPen(WHITE, 1);
+	pWind->SetBrush(WHITE);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
+}
+//////////////////////////////////////////////////////////////////////////////////////////
 void GUI::CreateDrawToolBar() const
 {
+	CreateToolBar();
 	UI.InterfaceMode = MODE_DRAW;
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
@@ -285,13 +298,14 @@ void GUI::CreateDrawToolBar() const
 //*****v3**** reem
 void GUI::CreatePlayToolBar() const
 {
+	CreateToolBar();
 	UI.InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->SetBrush(UI.BkGrndColor);
+	//pWind->SetPen(UI.BkGrndColor, 1);
+	//pWind->SetBrush(UI.BkGrndColor);
 	
 	
-		pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
+		//pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
 		//pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 	string PlayMenuItems[PLAY_ITM_COUNT];
 	PlayMenuItems[ITM_BY_TYPE] = "images\\MenuItems\\byType.jpg";
@@ -312,24 +326,22 @@ void GUI::CreatePlayToolBar() const
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::CreateColorToolBar() const //v2******************************************
 {
+	CreateToolBar();
 	UI.InterfaceMode = MODE_COLOR;
-	// clear tool bar
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->SetBrush(UI.BkGrndColor);
-	//pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
-	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 
-	string MenuItemImages2[COLOR_ITM_COUNT];
+	string ColorMenuItems[COLOR_ITM_COUNT];
 
-	MenuItemImages2[ITM_BLACK] = "images\\MenuItems\\Black.jpg";
-	MenuItemImages2[ITM_WHITE] = "images\\MenuItems\\White.jpg";
-	MenuItemImages2[ITM_RED] = "images\\MenuItems\\Red.jpg";
-	MenuItemImages2[ITM_GREEN] = "images\\MenuItems\\Green.jpg";
-	MenuItemImages2[ITM_BLUE] = "images\\MenuItems\\Blue.jpg";
+	ColorMenuItems[ITM_RED] = "images\\MenuItems\\Menu_Red.jpg";
+	ColorMenuItems[ITM_GREEN] = "images\\MenuItems\\Menu_Green.jpg";
+	ColorMenuItems[ITM_BLUE] = "images\\MenuItems\\Menu_Blue.jpg";
+	ColorMenuItems[ITM_PINK] = "images\\MenuItems\\Menu_Pink.jpg";
+	ColorMenuItems[ITM_MAROON] = "images\\MenuItems\\Menu_Maroon.jpg";
+	ColorMenuItems[ITM_PURPLE] = "images\\MenuItems\\Menu_Purple.jpg";
+
 
 	//Draw menu item one image at a time
 	for (int i = 0; i < COLOR_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages2[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(ColorMenuItems[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
 
 
@@ -341,15 +353,11 @@ void GUI::CreateColorToolBar() const //v2***************************************
 ///v3 resize 
 void GUI::CreateSizeBar() const
 {
+	CreateToolBar();
 	UI.InterfaceMode = MODE_SIZE;
-	// clear the prev tool bar
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->SetBrush(UI.BkGrndColor);
-	//pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
-	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
-
 
 	string MenuItemImages[SIZE_ITM_COUNT];
+
 	MenuItemImages[ITM_BACK1] = "images\\MenuItems\\back.jpg";
 	MenuItemImages[ITM_QUARTER] = "images\\MenuItems\\quartter.jpg";
 	MenuItemImages[ITM_HALF] = "images\\MenuItems\\hallf.jpg";
