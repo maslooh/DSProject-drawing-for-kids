@@ -25,14 +25,16 @@ void PickByColor::Execute()
 	string playColor;
 
 
-	if (pManager->hasDifferentColors())
+	if (pManager->getFigCount()>0)
 	{
 		//choose random color from existing figures (exclude the last selected color)
 		do 
 		{
-			int randomColor = rand() % pManager->getFigCount();
-			playColor = (pManager->getFigList(randomColor))->GetFillClr();
-		} while (PickByColor::lastColor == playColor);
+			/*int randomColor = rand() % pManager->getFigCount();
+			playColor = (pManager->getFigList(randomColor))->GetFillClr();*/
+			fig = pManager->getRandomFigure();
+			playColor = fig->GetFillClr();
+		} while (PickByColor::lastColor == playColor && pManager->hasDifferentColors());
 		PickByColor::lastColor = playColor;
 
 		// calculate the number of exist figures with selected color
@@ -98,7 +100,7 @@ void PickByColor::Execute()
 	}
 	else
 	{
-		pGUI->PrintMessage("Please draw figures with different colors to play!");
+		pGUI->PrintMessage("Please draw figures to play!");
 	}
 }
 

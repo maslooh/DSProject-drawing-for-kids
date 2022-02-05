@@ -1,49 +1,53 @@
 #include "pickByType.h"
 #include "../ApplicationManager.h"
 #include "../GUI/GUI.h"
+#include"../Figures/CFigure.h"
 #include"../Figures/CSquare.h"
 #include"../Figures/CEllipse.h"
 #include"../Figures/CHexagon.h"
-
+#include <iostream>
 pickByType::pickByType(ApplicationManager* pApp) :Action(pApp) {
 	no_shapes = 0;
 	rightAns = 0;
 	wrongAns = 0;
 }
 void pickByType::Execute() {
-	srand(time(0));
 
 	for (int i = 0; i < pManager->getFigCount(); i++) {
 
 		Fig = pManager->getFigList(i);
-		if (dynamic_cast<CSquare*>(Fig)) {
+		if (Fig->getFigureName() == "SQUARE") {
 			shapes[0]++;	// indx 0 represents no. squares
 		}
-		else if (dynamic_cast<CEllipse*>(Fig)) {
+		else if (Fig->getFigureName() == "ELLIPSE") {
 			shapes[1]++;	// indx 1 represents no. Ellipse
 		}
 		else {
 			shapes[2]++;	// indx 2 represents no. Hexagons
-			}
-		}//end of for loop 
+		}
+	}//end of for loop 
 
-	// count how many categories we have  
+// count how many categories we have  
 	for (int j = 0; j < 3; j++) {
 		if (shapes[j] != 0) {
 			no_shapes++;
 		}
-	} 
+	}
 
 	GUI* pGUI = pManager->GetGUI();
 	if (no_shapes > 1) {
 		// choose a random shape from list to start your game
-		randomShape = rand() % pManager->getFigCount(); //v1 = rand() % 100 v1 in the range 0 to 99
-		Fig = pManager->getFigList(randomShape);
-		if (dynamic_cast<CSquare*>(Fig)) {
+
+		/*randomShape = rand() % pManager->getFigCount(); //v1 = rand() % 100 v1 in the range 0 to 99
+		Fig = pManager->getFigList(randomShape);*/
+		CFigure* Fig = pManager->getRandomFigure();//getting a random figure from figure list
+
+		//Fig = pManager->getFigList(randomShape);
+		if (Fig->getFigureName() == "SQUARE") {
 			no_shapesEachCategory = shapes[0];
 			pGUI->PrintMessage("Collect all Square shapes");
 		}
-		else if (dynamic_cast<CEllipse*>(Fig)) {
+		else if (Fig->getFigureName() == "ELLIPSE") {
 			no_shapesEachCategory = shapes[1];
 			pGUI->PrintMessage("Collect all Ellipse shapes");
 		}
@@ -51,26 +55,26 @@ void pickByType::Execute() {
 			no_shapesEachCategory = shapes[2];
 			pGUI->PrintMessage("Collect all Hexagon shapes");
 		}
-		while (no_shapesEachCategory>0) {
+		while (no_shapesEachCategory > 0) {
 
 			pGUI->GetPointClicked(p.x, p.y);
 			CFigure* selectedShape;
 			if (p.y > UI.ToolBarHeight || p.x > (UI.MenuItemWidth * PLAY_ITM_COUNT)) {
-				selectedShape = pManager->GetFigure(p.x,p.y);
+				selectedShape = pManager->GetFigure(p.x, p.y);
 				if (selectedShape != NULL) {
-					if (dynamic_cast<CSquare*>(Fig) && (dynamic_cast<CSquare*>(selectedShape))) {
+					if (Fig->getFigureName() == "SQUARE" && (selectedShape->getFigureName() == "SQUARE")) {
 						score(1);
 						selectedShape->HideShape();
 						pManager->UpdateInterface();
 						no_shapesEachCategory--;
 					}
-					else if (dynamic_cast<CEllipse*>(Fig) && (dynamic_cast<CEllipse*>(selectedShape))) {
+					else if (Fig->getFigureName() == "ELLIPSE" && (selectedShape->getFigureName() == "ELLIPSE")) {
 						score(1);
 						selectedShape->HideShape();
 						pManager->UpdateInterface();
 						no_shapesEachCategory--;
 					}
-					else if (dynamic_cast<CHexagon*>(Fig) && (dynamic_cast<CHexagon*>(selectedShape))) {
+					else if (Fig->getFigureName() == "HEXAGON" && (selectedShape->getFigureName() == "HEXAGON")) {
 						score(1);
 						selectedShape->HideShape();
 						pManager->UpdateInterface();
@@ -90,9 +94,9 @@ void pickByType::Execute() {
 				pGUI->PrintMessage("Game over! Choose a game to play");
 				no_shapesEachCategory = -1;
 			}
-			if (no_shapesEachCategory==0) {
+			if (no_shapesEachCategory == 0) {
 				score(3);
-				Sleep(1000);
+				Sleep(1500);
 			}
 		}//end of while
 	}// end of if (no_shapes>1)

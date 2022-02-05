@@ -27,11 +27,11 @@ void ActionAddHexagon::Execute()
 
 	//Step 1 - Read Square data from the user
 
-	pGUI->PrintMessage("New hexagon: Click at first point");
+	pGUI->PrintMessage("New hexagon: Click at top left point");
 	//Read 1st point and store in point P1
 	pGUI->GetPointClicked(P1.x, P1.y);
 
-	pGUI->PrintMessage("New hexagon: Click at second point");
+	pGUI->PrintMessage("New hexagon: Click at bottom right point");
 	//Read 2nd point and store in point P2
 	pGUI->GetPointClicked(P2.x, P2.y);
 
